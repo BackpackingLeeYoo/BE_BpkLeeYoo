@@ -27,7 +27,7 @@ const KakaoModule = (app: any) => {
           console.log("ck", existUser);
 
           if (existUser) {
-            done(null, existUser);
+            return done(null, existUser);
           }
 
           const newUser: UserParams = await User.create({
@@ -36,7 +36,7 @@ const KakaoModule = (app: any) => {
             profileImg: profile._json.properties.profile_image,
           });
 
-          done(null, newUser);
+          return done(null, newUser);
         } catch (error) {
           done(error);
         }
