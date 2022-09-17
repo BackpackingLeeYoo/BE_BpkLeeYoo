@@ -33,9 +33,11 @@ const KakaoModule = (app: any) => {
 
           const newUser: UserParams = await User.create({
             email: profile._json.kakao_account.email,
-            nickname: profile.displayName,
+            nickname: profile._json.properties.nickname,
             profileImg: profile._json.properties.profile_image,
           });
+
+          console.log("db", newUser);
 
           done(null, newUser);
         } catch (error) {
