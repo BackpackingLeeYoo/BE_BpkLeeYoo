@@ -3,7 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
 import { connect } from "./models/index";
-import passport from "passport";
+// import passport from "passport";
 import session from "express-session";
 import passportConfig from "./middlewares/passport";
 import router from "./routers/index";
@@ -35,8 +35,8 @@ app.use(
   })
 );
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 const port = config.port;
 app.listen(port, () => {
