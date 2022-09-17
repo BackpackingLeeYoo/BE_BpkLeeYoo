@@ -13,18 +13,15 @@ export const kakaoCallback = (
     "kakao",
     { failureRedirect: "/" },
     (err, user: UserParams) => {
-      console.log("userInfo", user);
-
       if (err) return next(err);
 
-      const payload = { userId: user.userId }; //TODO 체크
+      const payload = { userId: user.userId };
 
       const options = {
         expiresIn: jwtwebtoken.expiresIn,
       };
 
       const token = jwt.sign(payload, jwtwebtoken.secretKey, options);
-      console.log("kakao-token", token);
 
       res.json({
         token,

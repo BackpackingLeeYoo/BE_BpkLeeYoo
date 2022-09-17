@@ -3,7 +3,8 @@ import User from "../../models/user-model";
 import { Request, Response, NextFunction } from "express";
 import { jwtwebtoken } from "../../config/constants";
 
-module.exports = (req: Request, res: Response, next: NextFunction) => {
+const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
+  console.log(authorization);
   const { authorization } = req.headers;
   const [authType, authToken] = (authorization || "").split(" ");
 
@@ -29,3 +30,5 @@ module.exports = (req: Request, res: Response, next: NextFunction) => {
     });
   }
 };
+
+export default AuthMiddleware;
