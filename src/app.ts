@@ -26,8 +26,8 @@ app.use(router);
 app.use(
   session({
     secret: config.sessionSecret,
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     // cookie: {
     //   httpOnly: true,
     //   secure: false,
