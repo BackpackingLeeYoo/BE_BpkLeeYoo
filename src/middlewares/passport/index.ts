@@ -1,18 +1,73 @@
 import User from "../../models/user-model";
-import KakaoStratege from "./kakao-strategy";
+import passport from "passport";
+const KakaoStrategy = require("passport-kakao").Strategy;
+import { kakao } from "../../config/constants";
+import { UserParams } from "../../common/type";
 
-const kakaoPassport = (passport: any) => {
-  passport.serializeUser((user: any, done: any) => {
+const KakaoModule = (app: any) => {
+  app.use(passport.initialize());
+
+  passport.use(
+    new KakaoStrategy(
+      {
+        clientID: kakao.kakaoId,
+        callbackURL: kakao.kakaoUrl,
+      },
+      async (
+        accessToken: string,
+        refreshToken: string,
+        profile: any,
+        done: any
+      ) => {
+        try {
+          const existUser: UserParams | null = await User.findOne({
+            email: profile._json.kakao_account.email,
+          });
+
+          if (existUser) {
+            done(null, existUser);
+          }
+
+          const newUser: UserParams = await User.create({
+            email: profile._json.kakao_account.email,
+            nickname: profile._json.properties.nickname,
+            profileImg: profile._json.properties.profile_image,
+          });
+
+          done(null, newUser);
+        } catch (error) {
+          console.error(error);
+          done(error);
+        }
+      }
+    )
+  );
+  passport.serializeUser((user, done) => {
     done(null, user);
   });
-
-  passport.deserializeUser((user: any, done: any) => {
-    User.findOne({ _id: user.userId })
-      .then((user) => done(null, user))
-      .catch((err) => done(err));
+  passport.deserializeUser((user, done) => {
+    done(null, user as any);
   });
-
-  KakaoStratege(passport);
 };
 
-export default kakaoPassport;
+export default KakaoModule;
+
+// import passport from "passport";
+// import User from "../../models/user-model";
+// import KakaoStratege from "./kakao-strategy";
+
+// const kakaoPassport = (passport: any) => {
+//   passport.serializeUser((user: any, done: any) => {
+//     done(null, user);
+//   });
+
+//   passport.deserializeUser((user: any, done: any) => {
+//     User.findOne({ _id: user.userId })
+//       .then((user) => done(null, user))
+//       .catch((err) => done(err));
+//   });
+
+//   KakaoStratege(passport);
+// };
+
+// export default kakaoPassport;
