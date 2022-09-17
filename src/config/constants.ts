@@ -1,16 +1,21 @@
 import dotenv from "dotenv";
-import { Config, Jwtwebtoken } from "./type";
 dotenv.config();
 
-const { PORT, JWT_SECRETKEY, JWT_EXPIREIN } = process.env;
+const { PORT, JWT_SECRETKEY, JWT_EXPIREIN, KAKAO_ID, KAKAO_CALLBACK } =
+  process.env;
 
-const config: Config = {
-  port: PORT!,
+const config = {
+  port: PORT,
 };
 
-const jwtwebtoken: Jwtwebtoken = {
-  secretKey: JWT_SECRETKEY!,
-  expiresIn: JWT_EXPIREIN!,
+const jwtwebtoken = {
+  secretKey: JWT_SECRETKEY,
+  expiresIn: JWT_EXPIREIN,
 };
 
-export { config, jwtwebtoken };
+const kakao = {
+  kakaoId: KAKAO_ID,
+  kakaoUrl: KAKAO_CALLBACK,
+};
+
+export { config, jwtwebtoken, kakao };

@@ -1,11 +1,10 @@
 import dotenv from "dotenv";
-import { Development } from "./type";
 dotenv.config();
 
 const { DB_URL } = process.env;
 
-const development: Development = {
-  db: DB_URL!,
+const development = {
+  db: DB_URL,
 };
 
 // const test = {

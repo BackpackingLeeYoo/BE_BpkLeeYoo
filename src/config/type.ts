@@ -1,14 +1,18 @@
-interface Development {
-  db: string;
-}
+// interface Development {
+//   db: string;
+// }
 
-interface Config {
-  port: string;
-}
+// interface Config {
+//   port: string;
+// }
 
-interface Jwtwebtoken {
-  secretKey: string;
-  expiresIn: string;
-}
+// interface Jwtwebtoken {
+//   secretKey: string;
+//   expiresIn: string;
+// }
 
-export { Development, Config, Jwtwebtoken };
+// interface Kakao {
+//   kakaoId: string;
+// }
+
+// export { Development, Config, Jwtwebtoken, Kakao };

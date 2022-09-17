@@ -1,9 +1,12 @@
-// 해결방법 0.
-// declare namespace NodeJS {
-//   export interface ProcessEnv {
-//     DB_URL: string;
-//   }
-// }
+declare namespace NodeJS {
+  export interface ProcessEnv {
+    PORT: string;
+    DB_URL: string;
+    JWT_SECRETKEY: string;
+    JWT_EXPIREIN: string;
+    KAKAO_ID: string;
+  }
+}
 
 // // 해결 방법 1
 // const googleKey: string = process.env.NEXT_PUBLIC_GOOGLE_KEY ?? '';

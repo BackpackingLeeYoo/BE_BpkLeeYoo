@@ -1,9 +1,7 @@
-import express, { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import passport from "passport";
-// import jwt from "jsonwebtoken";
-// const Joi = require("joi");
-// const bcrypt = require("bcrypt");
+import { UserParams } from "../common/type";
 import { jwtwebtoken } from "../config/constants";
 
 export const kakaoCallback = (
@@ -11,23 +9,27 @@ export const kakaoCallback = (
   res: Response,
   next: NextFunction
 ) => {
-  passport.authenticate("kakao", { failureRedirect: "/" }, (err, user) => {
-    console.log("userInfo", user);
+  passport.authenticate(
+    "kakao",
+    { failureRedirect: "/" },
+    (err, user: UserParams) => {
+      console.log("userInfo", user);
 
-    if (err) return next(err);
+      if (err) return next(err);
 
-    const payload = user.email;
+      const payload = { userId: user.userId }; //TODO 체크
 
-    const options = {
-      expiresIn: jwtwebtoken.expiresIn,
-    };
+      const options = {
+        expiresIn: jwtwebtoken.expiresIn,
+      };
 
-    const token = jwt.sign(payload, jwtwebtoken.secretKey, options);
-    console.log("kakao-token", token);
+      const token = jwt.sign(payload, jwtwebtoken.secretKey, options);
+      console.log("kakao-token", token);
 
-    res.json({
-      token,
-      user,
-    });
-  })(req, res, next);
+      res.json({
+        token,
+        user,
+      });
+    }
+  )(req, res, next);
 };
