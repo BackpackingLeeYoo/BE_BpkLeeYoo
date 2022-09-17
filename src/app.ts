@@ -27,7 +27,7 @@ app.use(
   session({
     secret: config.sessionSecret,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     // cookie: {
     //   httpOnly: true,
     //   secure: false,
