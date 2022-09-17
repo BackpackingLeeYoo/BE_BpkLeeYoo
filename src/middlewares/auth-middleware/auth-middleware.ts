@@ -17,10 +17,11 @@
 //   try {
 //     const payload = jwt.verify(authToken, jwtwebtoken.secretKey);
 
-//     User.findById(payload.userId).then((user) => {
-//       res.locals.user = user;
-//       next();
-//     });
+//     console.log(payload);
+//     // User.findById(userId).then((user) => {
+//     //   res.locals.user = user;
+//     //   next();
+//     // });
 //   } catch (err) {
 //     res.status(401).send({
 //       errorMessage: "로그인 후 이용 가능한 기능입니다.",
