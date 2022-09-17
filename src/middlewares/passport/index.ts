@@ -5,7 +5,7 @@ const KakaoStrategy = require("passport-kakao").Strategy;
 import { kakao } from "../../config/constants";
 import { UserParams } from "../../common/type";
 
-module.exports = (app: any) => {
+const KakaoModule = (app: any) => {
   app.use(passport.initialize());
 
   passport.use(
@@ -50,3 +50,5 @@ module.exports = (app: any) => {
   //   done(null, user);
   // });
 };
+
+export default KakaoModule;
