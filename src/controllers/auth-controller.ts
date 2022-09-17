@@ -21,7 +21,7 @@ export const kakaoCallback = (
         expiresIn: jwtwebtoken.expiresIn,
       };
 
-      const token = jwt.sign(payload, jwtwebtoken.secretKey, options);
+      const token: string = jwt.sign(payload, jwtwebtoken.secretKey, options);
 
       res.json({
         token,

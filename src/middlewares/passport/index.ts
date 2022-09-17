@@ -3,6 +3,7 @@ import passport from "passport";
 const KakaoStrategy = require("passport-kakao").Strategy;
 import { kakao } from "../../config/constants";
 import { UserParams } from "../../common/type";
+import { creatUser, getUserByEmail } from "../../services/user-services";
 
 const KakaoModule = (app: any) => {
   app.use(passport.initialize());
@@ -20,21 +21,20 @@ const KakaoModule = (app: any) => {
         done: any
       ) => {
         try {
-          const existUser: UserParams | null = await User.findOne({
-            email: profile._json.kakao_account.email,
-          });
-
-          console.log("ck", existUser);
+          const email = profile._json.kakao_account.email;
+          const existUser: UserParams | null = await getUserByEmail(email);
 
           if (existUser) {
             return done(null, existUser);
           }
 
-          const newUser: UserParams = await User.create({
+          const params: UserParams = {
             email: profile._json.kakao_account.email,
             nickname: profile._json.properties.nickname,
             profileImg: profile._json.properties.profile_image,
-          });
+          };
+
+          const newUser: UserParams = await creatUser(params);
 
           return done(null, newUser);
         } catch (error) {

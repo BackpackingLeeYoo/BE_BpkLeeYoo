@@ -1,25 +1,19 @@
 import { Request, Response, NextFunction } from "express";
-import User from "../models/user-model";
+import { NotFoundException } from "../common/exceptions/not-found-exception";
+import { StatusCode, UserParams } from "../common/type";
+import { getUserById } from "../services/user-services";
 
-const getUser = async (req: Request, res: Response) => {
-  try {
-    const { userId } = res.locals.user;
+const findUser = async (req: Request, res: Response) => {
+  const { userId } = res.locals.user;
+  const existUser: UserParams | null = await getUserById(userId);
 
-    const existUser = await User.findOne({ _id: userId });
-
-    if (!existUser) {
-    }
-
-    res.status(200).json({
-      existUser,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(400).send({
-      errorMessage: "사용자 정보 조회 실패",
-    });
-    return;
+  if (!existUser) {
+    throw new NotFoundException("존재하지 않는 사용자입니다.");
   }
+
+  res.status(StatusCode.OK).json({
+    existUser,
+  });
 };
 
-export { getUser };
+export { findUser };
