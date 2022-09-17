@@ -26,12 +26,12 @@ app.use(router);
 app.use(
   session({
     secret: config.sessionSecret,
-    resave: false,
+    resave: true,
     saveUninitialized: true,
-    cookie: {
-      httpOnly: true,
-      secure: false,
-    },
+    // cookie: {
+    //   httpOnly: true,
+    //   secure: false,
+    // },
   })
 );
 
