@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from "express";
 import { jwtwebtoken } from "../../config/constants";
 
 const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  console.log(authorization);
+  console.log(req.headers);
   const { authorization } = req.headers;
   const [authType, authToken] = (authorization || "").split(" ");
 
