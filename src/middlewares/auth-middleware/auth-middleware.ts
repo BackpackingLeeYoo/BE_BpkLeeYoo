@@ -4,7 +4,6 @@ import { Request, Response, NextFunction } from "express";
 import { jwtwebtoken } from "../../config/constants";
 
 const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  console.log(req.headers);
   const { authorization } = req.headers;
   const [authType, authToken] = (authorization || "").split(" ");
 
@@ -18,7 +17,6 @@ const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
   try {
     const payload: any = jwt.verify(authToken, jwtwebtoken.secretKey);
     const userId = payload.userId;
-    console.log(payload);
 
     User.findById(userId).then((user) => {
       res.locals.user = user;

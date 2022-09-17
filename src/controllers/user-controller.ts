@@ -3,9 +3,11 @@ import User from "../models/user-model";
 
 const getUser = async (req: Request, res: Response) => {
   try {
+    console.log(res.locals.user.userId);
+    console.log(res.locals.user._id);
     const { userId } = res.locals.user;
 
-    const existUser = await User.find({ userId });
+    const existUser = await User.findOne({ _id: userId });
 
     if (!existUser) {
     }

@@ -24,6 +24,8 @@ const KakaoModule = (app: any) => {
             email: profile._json.kakao_account.email,
           });
 
+          console.log("ck", existUser);
+
           if (existUser) {
             done(null, existUser);
           }
@@ -36,7 +38,6 @@ const KakaoModule = (app: any) => {
 
           done(null, newUser);
         } catch (error) {
-          console.error(error);
           done(error);
         }
       }
