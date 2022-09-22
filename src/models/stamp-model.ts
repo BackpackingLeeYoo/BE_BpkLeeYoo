@@ -7,6 +7,7 @@ const StampSchema = new mongoose.Schema({
   },
   stampImage: {
     type: String,
+    required: true,
   },
   latitude: {
     type: Number,

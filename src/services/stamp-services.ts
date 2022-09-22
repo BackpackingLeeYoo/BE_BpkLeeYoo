@@ -1,5 +1,17 @@
 import { StampParams, UserStampParams } from "../common/type";
+import Stamp from "../models/stamp-model";
 import UserStamp from "../models/user-stamp-model";
+
+const addNewStamp = async (params: StampParams): Promise<StampParams> => {
+  const newStamp = await Stamp.create({
+    stampName: params.stampName,
+    stampImage: params.stampImage,
+    latitude: params.latitude,
+    longitude: params.longitude,
+  });
+
+  return newStamp;
+};
 
 const getAllUserStamp = async (
   userId: string
@@ -14,4 +26,4 @@ const countStamps = (stamps: StampParams[]): number => {
   return isStamp.length;
 };
 
-export { getAllUserStamp, countStamps };
+export { addNewStamp, getAllUserStamp, countStamps };

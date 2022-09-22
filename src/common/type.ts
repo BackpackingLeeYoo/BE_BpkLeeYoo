@@ -23,12 +23,12 @@ export interface UserParams {
 }
 
 export interface StampParams {
-  stampId: string;
+  stampId?: string;
   stampName: string;
   stampImage: string;
   latitude: number;
   longitude: number;
-  isStamp: boolean;
+  isStamp?: boolean;
 }
 
 export interface UserStampParams {
