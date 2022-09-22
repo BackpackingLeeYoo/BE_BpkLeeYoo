@@ -1,9 +1,8 @@
 import { Router } from "express";
 const router = Router();
-
 import authMiddleware from "../middlewares/auth-middleware/auth-middleware";
-import { findUser } from "../controllers/user-controller";
+import { findAllUserStamp } from "../controllers/stamp-controller";
 
-router.get("/me", authMiddleware, findUser);
+router.get("/", authMiddleware, findAllUserStamp);
 
 export default router;
