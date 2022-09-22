@@ -12,7 +12,7 @@ export const kakaoCallback = (
   passport.authenticate(
     "kakao",
     { failureRedirect: "/" },
-    (err, user: UserParams) => {
+    (err: Error, user: UserParams) => {
       if (err) return next(err);
 
       const payload = { userId: user.userId };

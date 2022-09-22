@@ -1,5 +1,4 @@
 import express from "express";
-import "express-async-errors";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
@@ -8,7 +7,7 @@ import passportConfig from "./middlewares/passport";
 import router from "./routers/index";
 import { config } from "./config/constants";
 import { Request, Response, NextFunction } from "express";
-import { CustomError } from "./common/type";
+import { StatusCode, ErrorMessage } from "./common/type";
 
 const app = express();
 
@@ -24,19 +23,11 @@ app.use(helmet());
 
 app.use(router);
 
-const errorHandling = (
-  err: CustomError,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  res.sendStatus(err.statusCode).json({
-    msg: err.message,
-    success: false,
-  });
-};
-
-router.use(errorHandling);
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  res
+    .sendStatus(StatusCode.INTERNAL_SERVER_ERROR)
+    .json({ errorMessage: ErrorMessage.INTERNAL_SERVER_ERROR });
+});
 
 const port = config.port;
 app.listen(port, () => {

@@ -25,5 +25,5 @@ UserSchema.set("toJSON", {
   virtuals: true,
 });
 
-const User = mongoose.model("User", UserSchema);
+const User = mongoose.model("UserRepository", UserSchema);
 export default User;
