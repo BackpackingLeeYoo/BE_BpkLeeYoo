@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import passport from "passport";
 import { jwtwebtoken } from "../config/constants";
 import { ErrorMessageEnum, StatusCodeEnum, UserParams } from "../common/type";
-import { getUserById } from "../services/user-services";
+import { getUserById } from "../services/auth-services";
 
 const { UNAUTHORIZED } = StatusCodeEnum;
 const { NOT_FOUND_USER } = ErrorMessageEnum;

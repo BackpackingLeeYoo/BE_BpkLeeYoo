@@ -4,7 +4,7 @@ dotenv.config();
 const { DB_URL } = process.env;
 
 const development = {
-  db: DB_URL,
+  db: DB_URL!,
 };
 
 // const production = {

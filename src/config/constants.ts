@@ -11,18 +11,18 @@ const {
 } = process.env;
 
 const config = {
-  port: PORT,
-  sessionSecret: SESSION_SECRET,
+  port: PORT!,
+  sessionSecret: SESSION_SECRET!,
 };
 
 const jwtwebtoken = {
-  secretKey: JWT_SECRETKEY,
-  expiresIn: JWT_EXPIREIN,
+  secretKey: JWT_SECRETKEY!,
+  expiresIn: JWT_EXPIREIN!,
 };
 
 const kakao = {
-  kakaoId: KAKAO_ID,
-  kakaoUrl: KAKAO_CALLBACK,
+  kakaoId: KAKAO_ID!,
+  kakaoUrl: KAKAO_CALLBACK!,
 };
 
 export { config, jwtwebtoken, kakao };
