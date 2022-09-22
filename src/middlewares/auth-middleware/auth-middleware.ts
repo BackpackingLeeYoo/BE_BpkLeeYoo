@@ -1,30 +1,34 @@
-// import jwt from "jsonwebtoken";
-// import User from "../../models/user-model";
-// import { Request, Response, NextFunction } from "express";
-// import { jwtwebtoken } from "../../config/constants";
+import jwt from "jsonwebtoken";
+import UserRepository from "../../models/user-model";
+import { Request, Response, NextFunction } from "express";
+import { jwtwebtoken } from "../../config/constants";
+import { ErrorMessage, StatusCode } from "../../common/type";
 
-// module.exports = (req: Request, res: Response, next: NextFunction) => {
-//   const { authorization } = req.headers;
-//   const [authType, authToken] = (authorization || "").split(" ");
+const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
+  const { authorization } = req.headers;
+  const [authType, authToken] = (authorization || "").split(" ");
 
-//   if (!authToken || authType !== "Bearer") {
-//     res.status(401).send({
-//       errorMessage: "로그인 후 이용 가능한 기능입니다.",
-//     });
-//     return;
-//   }
+  console.log(authorization);
 
-//   try {
-//     const payload = jwt.verify(authToken, jwtwebtoken.secretKey);
+  if (!authToken || authType !== "Bearer") {
+    return res.status(StatusCode.UNAUTHORIZED).send({
+      message: ErrorMessage.UNAUTHORIZED_ERROR,
+    });
+  }
 
-//     console.log(payload);
-//     // User.findById(userId).then((user) => {
-//     //   res.locals.user = user;
-//     //   next();
-//     // });
-//   } catch (err) {
-//     res.status(401).send({
-//       errorMessage: "로그인 후 이용 가능한 기능입니다.",
-//     });
-//   }
-// };
+  try {
+    const payload: any = jwt.verify(authToken, jwtwebtoken.secretKey);
+    const userId = payload.userId;
+
+    UserRepository.findById(userId).then((user) => {
+      res.locals.user = user;
+      next();
+    });
+  } catch (err) {
+    return res.status(StatusCode.UNAUTHORIZED).send({
+      message: ErrorMessage.UNAUTHORIZED_ERROR,
+    });
+  }
+};
+
+export default AuthMiddleware;

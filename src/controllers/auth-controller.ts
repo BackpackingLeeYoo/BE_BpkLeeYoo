@@ -12,19 +12,16 @@ export const kakaoCallback = (
   passport.authenticate(
     "kakao",
     { failureRedirect: "/" },
-    (err, user: UserParams) => {
-      console.log("userInfo", user);
-
+    (err: Error, user: UserParams) => {
       if (err) return next(err);
 
-      const payload = { userId: user.userId }; //TODO 체크
+      const payload = { userId: user.userId };
 
       const options = {
         expiresIn: jwtwebtoken.expiresIn,
       };
 
-      const token = jwt.sign(payload, jwtwebtoken.secretKey, options);
-      console.log("kakao-token", token);
+      const token: string = jwt.sign(payload, jwtwebtoken.secretKey, options);
 
       res.json({
         token,
