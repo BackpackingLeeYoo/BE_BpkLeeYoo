@@ -1,4 +1,5 @@
 import express from "express";
+import "express-async-errors";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
@@ -8,7 +9,6 @@ import router from "./routers/index";
 import { config } from "./config/constants";
 import { Request, Response, NextFunction } from "express";
 import { CustomError } from "./common/type";
-require("express-async-errors");
 
 const app = express();
 
@@ -30,7 +30,7 @@ const errorHandling = (
   res: Response,
   next: NextFunction
 ) => {
-  res.status(err.statusCode).json({
+  res.sendStatus(err.statusCode).json({
     msg: err.message,
     success: false,
   });
