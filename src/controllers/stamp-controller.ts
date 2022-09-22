@@ -26,7 +26,9 @@ const params: StampParams = {
 
 const createStamp = async (req: Request, res: Response, next: NextFunction) => {
   const newStamp: StampParams = await addNewStamp(params);
-  return newStamp;
+  res.status(OK).json({
+    newStamp,
+  });
 };
 
 const findAllUserStamp = async (

@@ -2,9 +2,9 @@ import { Router } from "express";
 const router = Router();
 
 import authRouter from "./auth-router";
-import userRouter from "./stamp-router";
+import stampRouter from "./stamp-router";
 
 router.use("/auth", authRouter);
-router.use("/mypage", userRouter);
+router.use("/mypage", stampRouter);
 
 export default router;
