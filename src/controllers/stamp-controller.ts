@@ -37,6 +37,8 @@ const findAllUserStamp = async (
   next: NextFunction
 ) => {
   const { userId } = res.locals.user;
+  console.log(res.locals.user);
+  console.log(userId);
   const user: UserParams | null = await getUserById(userId);
 
   if (!user) {
@@ -55,4 +57,15 @@ const findAllUserStamp = async (
   }
 };
 
-export { createStamp, findAllUserStamp };
+const createUserStamp = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const newStamp: StampParams = await addNewStamp(params);
+  res.status(OK).json({
+    newStamp,
+  });
+};
+
+export { createStamp, findAllUserStamp, createUserStamp };

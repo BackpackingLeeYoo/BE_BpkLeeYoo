@@ -25,6 +25,7 @@ const KakaoModule = (app: any) => {
           const existUser: UserParams | null = await User.findOne({
             email: profile._json.kakao_account.email,
           });
+          console.log(existUser);
 
           if (existUser) {
             done(null, existUser);
