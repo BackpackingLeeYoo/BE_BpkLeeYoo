@@ -42,14 +42,16 @@ const findAllUserStamp = async (
   if (!user) {
     return res.status(UNAUTHORIZED).json({ message: NOT_FOUND_USER });
   }
-  console.log("user", user);
+
   const userStamps: UserStampParams | null = await getAllUserStamp(userId);
-  console.log("userStamps", userStamps);
+  const stamps = userStamps?.stamps;
+
   if (userStamps !== null) {
     const isStampCount = countStamps(userStamps.stamps);
+    console.log(isStampCount);
 
     res.status(OK).json({
-      userStamps,
+      stamps,
       isStampCount,
     });
   }
