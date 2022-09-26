@@ -16,7 +16,7 @@ const addNewStamp = async (params: StampParams): Promise<StampParams> => {
 const getAllUserStamp = async (
   userId: string
 ): Promise<UserStampParams | null> => {
-  return await UserStamp.findOne({ _id: userId });
+  return await UserStamp.findOne({ userId });
 };
 
 const countStamps = (stamps: StampParams[]): number => {
