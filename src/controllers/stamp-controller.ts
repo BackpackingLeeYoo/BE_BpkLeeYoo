@@ -37,16 +37,14 @@ const findAllUserStamp = async (
   next: NextFunction
 ) => {
   const { userId } = res.locals.user;
-  console.log(res.locals.user);
-  console.log(userId);
   const user: UserParams | null = await getUserById(userId);
 
   if (!user) {
     return res.status(UNAUTHORIZED).json({ message: NOT_FOUND_USER });
   }
-
+  console.log("user", user);
   const userStamps: UserStampParams | null = await getAllUserStamp(userId);
-
+  console.log("userStamps", userStamps);
   if (userStamps !== null) {
     const isStampCount = countStamps(userStamps.stamps);
 
