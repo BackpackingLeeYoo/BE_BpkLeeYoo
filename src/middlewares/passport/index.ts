@@ -24,7 +24,7 @@ const KakaoModule = (app: any) => {
           const existUser: typeof User | null = await User.findOne({
             email: profile._json.kakao_account.email,
           });
-          console.log(existUser);
+          console.log("existUser");
 
           if (existUser) {
             done(null, existUser);
@@ -35,7 +35,7 @@ const KakaoModule = (app: any) => {
               profileImg: profile._json.properties.profile_image,
             });
 
-            console.log("newUser", newUser);
+            console.log("newUser");
 
             stamps.forEach(async (stamp) => {
               await Stamp.create({
@@ -50,7 +50,6 @@ const KakaoModule = (app: any) => {
             done(null, newUser);
           }
         } catch (error) {
-          console.error(error);
           done(error);
         }
       }

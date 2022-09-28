@@ -16,7 +16,7 @@ const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
       message: UNAUTHORIZED_ERROR,
     });
   }
-  console.log(authToken);
+
   try {
     const payload: any = jwt.verify(authToken, jwtwebtoken.secretKey);
     const userId = payload.userId;
