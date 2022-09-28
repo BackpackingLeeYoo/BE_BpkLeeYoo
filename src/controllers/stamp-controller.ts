@@ -4,68 +4,68 @@ import {
   StampParams,
   StatusCodeEnum,
   UserParams,
-  UserStampParams,
 } from "../common/type";
-import {
-  addNewStamp,
-  countStamps,
-  getAllUserStamp,
-} from "../services/stamp-services";
-import { getUserById } from "../services/auth-services";
+import { countStamps, updateUserStamp } from "../services/stamp-services";
+import { getUserById, getUserWithStampsById } from "../services/auth-services";
 
-const { UNAUTHORIZED, OK } = StatusCodeEnum;
-const { NOT_FOUND_USER } = ErrorMessageEnum;
+const { UNAUTHORIZED, OK, NOT_FOUND } = StatusCodeEnum;
+const { NOT_FOUND_USER, NOT_FOUND_ERROR } = ErrorMessageEnum;
 
-const params: StampParams = {
-  stampName: "대이작도",
-  stampImage:
-    "https://itour.incheon.go.kr/common/viewImg.do?imgId=DBI22012116261839588",
-  latitude: 37.486313,
-  longitude: 126.926586,
-};
+interface UpdateStampParams {
+  stampImage: string;
+  stampComment: string;
+  weatherTemp: string;
+  weatherIcon: string;
+}
 
-const createStamp = async (req: Request, res: Response, next: NextFunction) => {
-  const newStamp: StampParams = await addNewStamp(params);
-  res.status(OK).json({
-    newStamp,
-  });
-};
-
-const findAllUserStamp = async (
+const findAllStamps = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   const { userId } = res.locals.user;
-  const user: UserParams | null = await getUserById(userId);
+  const user = await getUserWithStampsById(userId);
 
   if (!user) {
     return res.status(UNAUTHORIZED).json({ message: NOT_FOUND_USER });
   }
 
-  const userStamps: UserStampParams | null = await getAllUserStamp(userId);
-  const stamps = userStamps?.stamps;
+  const stamps: StampParams[] = user.stamps;
+  const isStampCount = countStamps(stamps);
 
-  if (userStamps !== null) {
-    const isStampCount = countStamps(userStamps.stamps);
-    console.log(isStampCount);
-
-    res.status(OK).json({
-      stamps,
-      isStampCount,
-    });
-  }
+  res.status(OK).json({
+    stamps,
+    isStampCount,
+  });
 };
 
-const createUserStamp = async (
+const certifyStamp = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const newStamp: StampParams = await addNewStamp(params);
+  const { stampId } = req.params;
+  const { stampImage, stampComment, weatherTemp, weatherIcon } = req.body;
+
+  const { userId } = res.locals.user;
+  const user = await getUserById(userId);
+
+  if (!user) {
+    return res.status(UNAUTHORIZED).json({ message: NOT_FOUND_USER });
+  }
+
+  const params: UpdateStampParams = {
+    stampImage,
+    stampComment,
+    weatherTemp,
+    weatherIcon,
+  };
+
+  const certifiedUserStamp = await updateUserStamp(stampId, params);
+
   res.status(OK).json({
-    newStamp,
+    certifiedUserStamp,
   });
 };
 
-export { createStamp, findAllUserStamp, createUserStamp };
+export { findAllStamps, certifyStamp };

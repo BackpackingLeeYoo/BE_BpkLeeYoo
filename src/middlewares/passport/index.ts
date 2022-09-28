@@ -1,10 +1,9 @@
 import passport from "passport";
 const KakaoStrategy = require("passport-kakao").Strategy;
 import { kakao } from "../../config/constants";
-import { StampParams, UserParams, UserStampParams } from "../../common/type";
 import User from "../../models/user-model";
 import Stamp from "../../models/stamp-model";
-import UserStamp from "../../models/user-stamp-model";
+import { stamps } from "../../common/stamp-data";
 
 const KakaoModule = (app: any) => {
   app.use(passport.initialize());
@@ -22,31 +21,34 @@ const KakaoModule = (app: any) => {
         done: any
       ) => {
         try {
-          const existUser: UserParams | null = await User.findOne({
+          const existUser: typeof User | null = await User.findOne({
             email: profile._json.kakao_account.email,
           });
           console.log(existUser);
 
           if (existUser) {
             done(null, existUser);
+          } else {
+            const newUser = await User.create({
+              email: profile._json.kakao_account.email,
+              nickname: profile._json.properties.nickname,
+              profileImg: profile._json.properties.profile_image,
+            });
+
+            console.log("newUser", newUser);
+
+            stamps.forEach(async (stamp) => {
+              await Stamp.create({
+                stampName: stamp.stampName,
+                stampImage: stamp.stampImage,
+                latitude: stamp.latitude,
+                longitude: stamp.longitude,
+                userId: newUser,
+              });
+            });
+
+            done(null, newUser);
           }
-
-          const newUser: UserParams = await User.create({
-            email: profile._json.kakao_account.email,
-            nickname: profile._json.properties.nickname,
-            profileImg: profile._json.properties.profile_image,
-          });
-
-          console.log("newUser", newUser);
-
-          const stamps = await Stamp.find({});
-
-          await UserStamp.create({
-            userId: newUser.userId,
-            stamps: [...stamps],
-          });
-
-          done(null, newUser);
         } catch (error) {
           console.error(error);
           done(error);

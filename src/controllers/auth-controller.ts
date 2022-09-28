@@ -33,7 +33,7 @@ const kakaoCallback = (req: Request, res: Response, next: NextFunction) => {
 
 const findUser = async (req: Request, res: Response, next: NextFunction) => {
   const { userId } = res.locals.user;
-  const user: UserParams | null = await getUserById(userId);
+  const user = await getUserById(userId);
 
   if (!user) {
     return res.status(UNAUTHORIZED).json({ message: NOT_FOUND_USER });

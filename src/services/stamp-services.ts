@@ -1,23 +1,8 @@
-import { StampParams, UserStampParams } from "../common/type";
+import dayjs from "dayjs";
+import { StampParams } from "../common/type";
 import Stamp from "../models/stamp-model";
-import UserStamp from "../models/user-stamp-model";
 
-const addNewStamp = async (params: StampParams): Promise<StampParams> => {
-  const newStamp = await Stamp.create({
-    stampName: params.stampName,
-    stampImage: params.stampImage,
-    latitude: params.latitude,
-    longitude: params.longitude,
-  });
-
-  return newStamp;
-};
-
-const getAllUserStamp = async (
-  userId: string
-): Promise<UserStampParams | null> => {
-  return await UserStamp.findOne({ userId });
-};
+const YYYY_MM_DD_HH_mm_ss = "YYYY.MM.DD HH:mm:ss";
 
 const countStamps = (stamps: StampParams[]): number => {
   const isStamp = stamps.filter((stamp) => {
@@ -26,4 +11,36 @@ const countStamps = (stamps: StampParams[]): number => {
   return isStamp.length;
 };
 
-export { addNewStamp, getAllUserStamp, countStamps };
+const updateUserStamp = async (
+  stampId: string,
+  params: {
+    stampImage: string;
+    stampComment: string;
+    weatherTemp: string;
+    weatherIcon: string;
+  }
+): Promise<StampParams | null> => {
+  const now = dayjs();
+  const createdAt = dayjs(now).format(YYYY_MM_DD_HH_mm_ss);
+
+  //TODO stampId로 찾기 확인
+  await Stamp.updateOne(
+    { stampId },
+    {
+      $set: {
+        stampImage: params.stampImage,
+        isStamp: true,
+        stampComment: params.stampComment,
+        weatherTemp: params.weatherTemp,
+        weatherIcon: params.weatherIcon,
+        createdAt,
+      },
+    }
+  );
+
+  return await Stamp.findOne({
+    stampId,
+  });
+};
+
+export { countStamps, updateUserStamp };

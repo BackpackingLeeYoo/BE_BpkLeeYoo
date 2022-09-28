@@ -1,14 +1,9 @@
 import { Router } from "express";
 const router = Router();
 import authMiddleware from "../middlewares/auth-middleware/auth-middleware";
-import {
-  findAllUserStamp,
-  createStamp,
-  createUserStamp,
-} from "../controllers/stamp-controller";
+import { findAllStamps, certifyStamp } from "../controllers/stamp-controller";
 
-router.post("/stamp", createStamp);
-router.get("/", authMiddleware, findAllUserStamp);
-router.post("/", createUserStamp);
+router.get("/", authMiddleware, findAllStamps);
+router.post("/:stampId", certifyStamp);
 
 export default router;

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const StampSchema = new mongoose.Schema({
   stampName: {
@@ -20,6 +20,22 @@ const StampSchema = new mongoose.Schema({
   isStamp: {
     type: Boolean,
     default: false,
+  },
+  stampComment: {
+    type: String,
+  },
+  weatherTemp: {
+    type: String,
+  },
+  weatherIcon: {
+    type: String,
+  },
+  createdAt: {
+    type: String,
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
 });
 

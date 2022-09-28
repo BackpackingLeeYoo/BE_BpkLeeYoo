@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export enum StatusCodeEnum {
   OK = 200,
   NO_CONTENT = 204,
@@ -15,23 +17,24 @@ export enum ErrorMessageEnum {
   NOT_FOUND_ERROR = "응답을 찾을 수 없습니다.",
 }
 export interface UserParams {
-  userId?: string;
+  userId?: Types.ObjectId;
   email: string;
   nickname: string;
   profileImg?: string;
   refreshToken?: string;
+  stamps: StampParams[];
 }
 
 export interface StampParams {
-  stampId?: string;
+  stampId?: Types.ObjectId;
   stampName: string;
   stampImage: string;
   latitude: number;
   longitude: number;
   isStamp?: boolean;
-}
-
-export interface UserStampParams {
-  userId: string;
-  stamps: StampParams[];
+  stampComment?: string;
+  weatherTemp?: string;
+  weatherIcon?: string;
+  createdAt?: string;
+  userId?: Types.ObjectId;
 }
