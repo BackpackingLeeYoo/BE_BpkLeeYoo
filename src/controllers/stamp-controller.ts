@@ -1,33 +1,24 @@
-import { Request, Response, NextFunction } from "express";
-import {
-  ErrorMessageEnum,
-  StampParams,
-  StatusCodeEnum,
-  UserParams,
-} from "../common/type";
+import { Request, Response } from "express";
+import { ErrorMessageEnum, StampParams, StatusCodeEnum } from "../common/type";
 import { countStamps, updateUserStamp } from "../services/stamp-services";
 import { getUserById, getUserWithStampsById } from "../services/auth-services";
 
-const { UNAUTHORIZED, OK, NOT_FOUND } = StatusCodeEnum;
-const { NOT_FOUND_USER, NOT_FOUND_ERROR } = ErrorMessageEnum;
+const { OK } = StatusCodeEnum;
+const { NOT_FOUND_USER } = ErrorMessageEnum;
 
 interface UpdateStampParams {
-  stampImage: string;
+  stampImage?: string;
   stampComment: string;
   weatherTemp: string;
   weatherIcon: string;
 }
 
-const findAllStamps = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const findAllStamps = async (req: Request, res: Response) => {
   const { userId } = res.locals.user;
   const user = await getUserWithStampsById(userId);
 
   if (!user) {
-    return res.status(UNAUTHORIZED).json({ message: NOT_FOUND_USER });
+    throw new Error(NOT_FOUND_USER);
   }
 
   const stamps: StampParams[] = user.stamps;
@@ -39,23 +30,20 @@ const findAllStamps = async (
   });
 };
 
-const certifyStamp = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const certifyStamp = async (req: Request, res: Response) => {
   const { stampId } = req.params;
-  const { stampImage, stampComment, weatherTemp, weatherIcon } = req.body;
+  const { stampComment, weatherTemp, weatherIcon } = req.body;
+  const stampImage = req.file;
+  console.log(stampImage);
 
   const { userId } = res.locals.user;
   const user = await getUserById(userId);
 
   if (!user) {
-    return res.status(UNAUTHORIZED).json({ message: NOT_FOUND_USER });
+    throw new Error(NOT_FOUND_USER);
   }
 
   const params: UpdateStampParams = {
-    stampImage,
     stampComment,
     weatherTemp,
     weatherIcon,

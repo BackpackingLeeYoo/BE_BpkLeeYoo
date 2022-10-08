@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
+import multer from "multer";
 import { connect } from "./models/index";
 import passportConfig from "./middlewares/passport";
 import router from "./routers/index";

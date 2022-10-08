@@ -5,9 +5,6 @@ import { jwtwebtoken } from "../config/constants";
 import { ErrorMessageEnum, StatusCodeEnum, UserParams } from "../common/type";
 import { getUserById } from "../services/auth-services";
 
-const { UNAUTHORIZED } = StatusCodeEnum;
-const { NOT_FOUND_USER } = ErrorMessageEnum;
-
 const kakaoCallback = (req: Request, res: Response, next: NextFunction) => {
   passport.authenticate(
     "kakao",
@@ -31,12 +28,12 @@ const kakaoCallback = (req: Request, res: Response, next: NextFunction) => {
   )(req, res, next);
 };
 
-const findUser = async (req: Request, res: Response, next: NextFunction) => {
+const findUser = async (req: Request, res: Response) => {
   const { userId } = res.locals.user;
   const user = await getUserById(userId);
 
   if (!user) {
-    return res.status(UNAUTHORIZED).json({ message: NOT_FOUND_USER });
+    throw new Error(ErrorMessageEnum.NOT_FOUND_USER);
   }
 
   res.status(StatusCodeEnum.OK).json({

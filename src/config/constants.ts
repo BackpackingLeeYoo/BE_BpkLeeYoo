@@ -8,6 +8,9 @@ const {
   JWT_EXPIREIN,
   KAKAO_ID,
   KAKAO_CALLBACK,
+  ACCESS_KEY,
+  SECRET_ACCESS_KEY,
+  REGION,
 } = process.env;
 
 const config = {
@@ -25,4 +28,10 @@ const kakao = {
   kakaoUrl: KAKAO_CALLBACK!,
 };
 
-export { config, jwtwebtoken, kakao };
+const s3Bucket = {
+  accesskey: ACCESS_KEY!,
+  secretAcesskey: SECRET_ACCESS_KEY!,
+  region: REGION!,
+};
+
+export { config, jwtwebtoken, kakao, s3Bucket };

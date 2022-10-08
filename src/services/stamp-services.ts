@@ -14,7 +14,7 @@ const countStamps = (stamps: StampParams[]): number => {
 const updateUserStamp = async (
   stampId: string,
   params: {
-    stampImage: string;
+    stampImage?: string;
     stampComment: string;
     weatherTemp: string;
     weatherIcon: string;
