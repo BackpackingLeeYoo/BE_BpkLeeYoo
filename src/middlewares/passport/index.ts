@@ -34,6 +34,8 @@ const KakaoModule = (app: any) => {
               profileImg: profile._json.properties.profile_image,
             });
 
+            console.log(newUser);
+
             const newStamps = stamps.map(async (stamp) => {
               const newStamp = await Stamp.create({
                 stampName: stamp.stampName,
@@ -45,6 +47,8 @@ const KakaoModule = (app: any) => {
               return newStamp;
             });
 
+            console.log(newStamps);
+
             const user = await User.updateOne(
               { _id: newUser._id },
               {
@@ -53,6 +57,8 @@ const KakaoModule = (app: any) => {
                 },
               }
             );
+
+            console.log(user);
 
             done(null, user);
           }
