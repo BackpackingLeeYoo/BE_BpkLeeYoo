@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 import { development } from "../config/config";
 
 export const connect = () => {
