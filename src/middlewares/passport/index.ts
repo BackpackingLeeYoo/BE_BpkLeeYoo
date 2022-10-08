@@ -4,6 +4,7 @@ import { kakao } from "../../config/constants";
 import User from "../../models/user-model";
 import Stamp from "../../models/stamp-model";
 import { stamps } from "../../common/stamp-data";
+import { StampParams } from "../../common/type";
 
 const KakaoModule = (app: any) => {
   app.use(passport.initialize());
@@ -36,16 +37,19 @@ const KakaoModule = (app: any) => {
 
             console.log(newUser);
 
-            const newStamps = stamps.map(async (stamp) => {
-              const newStamp = await Stamp.create({
-                stampName: stamp.stampName,
-                stampImage: stamp.stampImage,
-                latitude: stamp.latitude,
-                longitude: stamp.longitude,
-                userId: newUser,
-              });
-              return newStamp;
-            });
+            const newStamps: any = await Promise.all(
+              stamps.map(async (stamp) => {
+                const newStamp = await Stamp.create({
+                  stampName: stamp.stampName,
+                  stampImage: stamp.stampImage,
+                  latitude: stamp.latitude,
+                  longitude: stamp.longitude,
+                  userId: newUser,
+                });
+
+                return newStamp;
+              })
+            );
 
             console.log(newStamps);
 
