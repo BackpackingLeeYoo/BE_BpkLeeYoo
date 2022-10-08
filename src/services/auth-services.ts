@@ -8,7 +8,7 @@ const getUserById = async (userId: string): Promise<UserParams | null> => {
 const getUserWithStampsById = async (
   userId: string
 ): Promise<UserParams | null> => {
-  return await User.findOne({ _id: userId }).populate("Stamp");
+  return await User.findOne({ _id: userId }).populate("Stamps");
 };
 
 const getUserByEmail = async (email: string): Promise<typeof User | null> => {
