@@ -16,7 +16,6 @@ interface UpdateStampParams {
 const findAllStamps = async (req: Request, res: Response) => {
   try {
     const { userId } = res.locals.user;
-    console.log("1", userId);
     const user = await getUserWithStampsById(userId);
 
     if (!user) {
