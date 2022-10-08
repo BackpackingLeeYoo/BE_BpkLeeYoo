@@ -41,8 +41,8 @@ const certifyStamp = async (req: Request, res: Response) => {
   try {
     const { stampId } = req.params;
     const { stampComment, weatherTemp, weatherIcon } = req.body;
+    console.log(req.body, req.file);
     const stampImage = req.file;
-    console.log(stampImage);
 
     const { userId } = res.locals.user;
     const user = await getUserById(userId);

@@ -21,6 +21,7 @@ const imageUploader = multer({
     s3: s3,
     bucket: "bpk-leeyoo",
     key: (req, file, callback) => {
+      console.log(file);
       const extension = path.extname(file.originalname);
       if (!alloedExtensions.includes(extension)) {
         return callback(new Error(ErrorMessageEnum.WRONG_EXTENSION));
