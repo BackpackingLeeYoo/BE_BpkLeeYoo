@@ -45,7 +45,7 @@ const KakaoModule = (app: any) => {
               return newStamp;
             });
 
-            await User.updateOne(
+            const user = await User.updateOne(
               { _id: newUser._id },
               {
                 $set: {
@@ -54,7 +54,7 @@ const KakaoModule = (app: any) => {
               }
             );
 
-            done(null, newUser);
+            done(null, user);
           }
         } catch (error) {
           done(error);
