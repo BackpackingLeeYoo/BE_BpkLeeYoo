@@ -38,7 +38,7 @@ export const imageUploader = multer({
     s3: <any>s3,
     bucket: s3Bucket.bucket,
     acl: "public-read",
-    contentType: multerS3.AUTO_CONTENT_TYPE, // 이미지 자동다운로드 방지
+    contentType: multerS3.AUTO_CONTENT_TYPE,
     key: function (
       req: Request,
       file: Express.MulterS3.File,
