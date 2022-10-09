@@ -14,7 +14,7 @@ const countStamps = (stamps: StampParams[]): number => {
 const updateUserStamp = async (
   stampId: string,
   params: {
-    stampImage?: string;
+    stampImage: string;
     stampComment: string;
     weatherTemp: string;
     weatherIcon: string;
@@ -23,7 +23,6 @@ const updateUserStamp = async (
   const now = dayjs();
   const createdAt = dayjs(now).format(YYYY_MM_DD_HH_mm_ss);
 
-  //TODO stampId로 찾기 확인
   await Stamp.updateOne(
     { stampId },
     {

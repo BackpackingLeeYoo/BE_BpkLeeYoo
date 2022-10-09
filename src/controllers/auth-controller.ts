@@ -31,17 +31,19 @@ const kakaoCallback = (req: Request, res: Response, next: NextFunction) => {
 const findUser = async (req: Request, res: Response) => {
   try {
     const { userId } = res.locals.user;
-    const user = await getUserById(userId);
+    const existUser = await getUserById(userId);
 
-    if (!user) {
-      throw new Error(ErrorMessageEnum.NOT_FOUND_USER);
-    }
+    const user = {
+      userId: existUser.userId,
+      nickname: existUser.nickname,
+      profileImg: existUser.profileImg,
+    };
 
     res.status(StatusCodeEnum.OK).json({
       user,
     });
   } catch (err) {
-    res.status(StatusCodeEnum.UNAUTHORIZED).send({
+    res.status(StatusCodeEnum.NOT_FOUND).send({
       message: ErrorMessageEnum.NOT_FOUND_USER,
     });
   }

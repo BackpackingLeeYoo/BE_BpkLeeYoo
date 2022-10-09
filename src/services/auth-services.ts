@@ -1,18 +1,27 @@
-import { UserParams } from "../common/type";
+import { ErrorMessageEnum, StatusCodeEnum, UserParams } from "../common/type";
 import User from "../models/user-model";
 
-const getUserById = async (userId: string): Promise<UserParams | null> => {
-  return await User.findOne({ _id: userId });
+const getUserById = async (userId: string): Promise<UserParams> => {
+  const user = await User.findOne({ _id: userId });
+  return isUser(user);
 };
 
-const getUserWithStampsById = async (
-  userId: string
-): Promise<UserParams | null> => {
-  return await User.findOne({ _id: userId }).populate("stamps");
+const getUserWithStampsById = async (userId: string): Promise<UserParams> => {
+  const user = await User.findOne({ _id: userId }).populate("stamps");
+  return isUser(user);
 };
 
-const getUserByEmail = async (email: string): Promise<typeof User | null> => {
-  return await User.findOne({ email });
+const getUserByEmail = async (email: string): Promise<UserParams> => {
+  const user = await User.findOne({ email });
+  return isUser(user);
+};
+
+const isUser = (user: UserParams | null): UserParams => {
+  if (!user) {
+    throw new Error(ErrorMessageEnum.NOT_FOUND_USER);
+  }
+
+  return user;
 };
 
 export { getUserById, getUserWithStampsById, getUserByEmail };

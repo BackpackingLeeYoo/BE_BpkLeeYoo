@@ -13,21 +13,21 @@ export enum ErrorMessageEnum {
   INTERNAL_SERVER_ERROR = "서버문제로 응답할 수 없습니다.",
   UNAUTHORIZED_ERROR = "유효하지 않은 토큰입니다.",
   BAD_REQUEST_ERROR = "잘못된 요청입니다.",
-  NOT_FOUND_USER = "로그인 후 이용해주세요.",
-  NOT_FOUND_ERROR = "응답을 찾을 수 없습니다.",
+  NOT_FOUND_USER = "사용자 정보를 찾을 수 없습니다.",
+  NOT_FOUND_ERROR = "요청한 정보를 찾을 수 없습니다.",
   WRONG_EXTENSION = "잘못된 파일 형식입니다.",
 }
 export interface UserParams {
-  userId?: Types.ObjectId;
+  userId?: string;
   email: string;
   nickname: string;
   profileImg?: string;
   refreshToken?: string;
-  stamps: StampParams[];
+  stamps: StampParams[] | StampsParams[];
 }
 
 export interface StampParams {
-  stampId?: Types.ObjectId;
+  stampId?: string;
   stampName: string;
   stampImage: string;
   latitude: number;
@@ -38,4 +38,9 @@ export interface StampParams {
   weatherIcon?: string;
   createdAt?: string;
   userId?: Types.ObjectId;
+}
+
+export interface StampsParams {
+  type?: Types.ObjectId;
+  ref?: unknown;
 }

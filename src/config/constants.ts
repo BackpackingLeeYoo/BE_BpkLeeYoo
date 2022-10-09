@@ -11,6 +11,7 @@ const {
   ACCESS_KEY,
   SECRET_ACCESS_KEY,
   REGION,
+  BUCKET,
 } = process.env;
 
 const config = {
@@ -29,6 +30,7 @@ const kakao = {
 };
 
 const s3Bucket = {
+  bucket: BUCKET!,
   accesskey: ACCESS_KEY!,
   secretAcesskey: SECRET_ACCESS_KEY!,
   region: REGION!,

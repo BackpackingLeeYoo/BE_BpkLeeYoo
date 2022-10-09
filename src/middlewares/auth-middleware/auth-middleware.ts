@@ -5,7 +5,7 @@ import { jwtwebtoken } from "../../config/constants";
 import { ErrorMessageEnum, StatusCodeEnum } from "../../common/type";
 
 const { UNAUTHORIZED } = StatusCodeEnum;
-const { UNAUTHORIZED_ERROR } = ErrorMessageEnum;
+const { UNAUTHORIZED_ERROR, NOT_FOUND_USER } = ErrorMessageEnum;
 
 const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const { authorization } = req.headers;
@@ -27,7 +27,7 @@ const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
     });
   } catch (err) {
     return res.status(UNAUTHORIZED).send({
-      message: UNAUTHORIZED_ERROR,
+      message: NOT_FOUND_USER,
     });
   }
 };

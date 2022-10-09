@@ -1,13 +1,18 @@
 import { Request, Response } from "express";
-import { ErrorMessageEnum, StampParams, StatusCodeEnum } from "../common/type";
+import {
+  ErrorMessageEnum,
+  StampParams,
+  StampsParams,
+  StatusCodeEnum,
+} from "../common/type";
 import { countStamps, updateUserStamp } from "../services/stamp-services";
 import { getUserById, getUserWithStampsById } from "../services/auth-services";
 
-const { OK, BAD_REQUEST, UNAUTHORIZED } = StatusCodeEnum;
-const { NOT_FOUND_USER, BAD_REQUEST_ERROR } = ErrorMessageEnum;
+const { OK, BAD_REQUEST, NOT_FOUND } = StatusCodeEnum;
+const { NOT_FOUND_ERROR, BAD_REQUEST_ERROR } = ErrorMessageEnum;
 
 interface UpdateStampParams {
-  stampImage?: string;
+  stampImage: string;
   stampComment: string;
   weatherTemp: string;
   weatherIcon: string;
@@ -18,11 +23,7 @@ const findAllStamps = async (req: Request, res: Response) => {
     const { userId } = res.locals.user;
     const user = await getUserWithStampsById(userId);
 
-    if (!user) {
-      throw new Error(NOT_FOUND_USER);
-    }
-
-    const stamps: StampParams[] = user.stamps;
+    const stamps = user.stamps as StampParams[];
     const isStampCount = countStamps(stamps);
 
     res.status(OK).json({
@@ -31,27 +32,23 @@ const findAllStamps = async (req: Request, res: Response) => {
     });
   } catch (err) {
     console.error(err);
-    res.status(UNAUTHORIZED).send({
-      message: NOT_FOUND_USER,
+    res.status(NOT_FOUND).send({
+      message: NOT_FOUND_ERROR,
     });
   }
 };
 
 const certifyStamp = async (req: Request, res: Response) => {
   try {
+    const { userId } = res.locals.user;
     const { stampId } = req.params;
     const { stampComment, weatherTemp, weatherIcon } = req.body;
-    console.log(req.body, req.file);
-    const stampImage = req.file;
+    const stampImage = (req.file as Express.MulterS3.File).location;
 
-    const { userId } = res.locals.user;
-    const user = await getUserById(userId);
-
-    if (!user) {
-      throw new Error(NOT_FOUND_USER);
-    }
+    await getUserById(userId);
 
     const params: UpdateStampParams = {
+      stampImage,
       stampComment,
       weatherTemp,
       weatherIcon,

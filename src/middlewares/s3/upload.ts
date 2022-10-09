@@ -1,38 +1,83 @@
-// import AWS from "aws-sdk";
+import AWS from "aws-sdk";
 import multer from "multer";
 import multerS3 from "multer-s3";
-import { S3Client } from "@aws-sdk/client-s3";
 import path from "path";
+import dayjs from "dayjs";
+import { Request } from "express";
 import { ErrorMessageEnum } from "../../common/type";
 import { s3Bucket } from "../../config/constants";
 
-const s3 = new S3Client({
+interface FileFilterCallback {
+  (error: Error): void;
+  (error: null, acceptFile: boolean): void;
+}
+
+type FileNameCallback = (error: Error | null, filename: string) => void;
+
+AWS.config.update({
+  accessKeyId: s3Bucket.accesskey,
+  secretAccessKey: s3Bucket.secretAcesskey,
   region: s3Bucket.region,
-  credentials: {
-    accessKeyId: s3Bucket.accesskey,
-    secretAccessKey: s3Bucket.secretAcesskey,
-  },
 });
 
-const alloedExtensions = [".png", "jpg", ".jpeg", "bmp", "gif"];
+const s3 = new AWS.S3();
 
-const imageUploader = multer({
+const fileFilter = (
+  req: Express.Request,
+  file: Express.MulterS3.File,
+  cb: FileFilterCallback
+) => {
+  if (
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/jpeg"
+  ) {
+    cb(null, true);
+  } else {
+    return cb(new Error(ErrorMessageEnum.WRONG_EXTENSION));
+  }
+};
+
+export const imageUploader = multer({
   storage: multerS3({
-    s3: s3,
-    bucket: "bpk-leeyoo",
-    key: (req, file, callback) => {
-      console.log(file);
-      const extension = path.extname(file.originalname);
-      if (!alloedExtensions.includes(extension)) {
-        return callback(new Error(ErrorMessageEnum.WRONG_EXTENSION));
-      }
-      callback(
+    s3: <any>s3,
+    bucket: s3Bucket.bucket,
+    acl: "public-read",
+    contentType: multerS3.AUTO_CONTENT_TYPE, // 자동다운로드 방지
+    key: (
+      req: Express.Request,
+      file: Express.MulterS3.File,
+      cb: FileNameCallback
+    ) => {
+      cb(
         null,
-        `stampImage/${Date.now()}_${path.basename(file.originalname)}`
+        `stampImage/${dayjs().format("YYYY/MM/DD")}_${path.basename(
+          file.originalname
+        )}`
       );
     },
-    acl: "public-read",
   }),
+  fileFilter: fileFilter,
 });
 
-export default imageUploader;
+export const multiimageUploader = multer({
+  storage: multerS3({
+    s3: <any>s3,
+    bucket: s3Bucket.bucket,
+    acl: "public-read",
+    contentType: multerS3.AUTO_CONTENT_TYPE,
+    key: function (
+      req: Express.Request,
+      file: Express.MulterS3.File,
+      cb: FileNameCallback
+    ) {
+      cb(
+        null,
+        `reveiwImage/${dayjs().format("YYYY/MM/DD")}_${path.basename(
+          file.originalname
+        )}`
+      );
+    },
+  }),
+  fileFilter: fileFilter,
+});
