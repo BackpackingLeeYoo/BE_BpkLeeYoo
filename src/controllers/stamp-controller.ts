@@ -1,10 +1,5 @@
 import { Request, Response } from "express";
-import {
-  ErrorMessageEnum,
-  StampParams,
-  StampsParams,
-  StatusCodeEnum,
-} from "../common/type";
+import { ErrorMessageEnum, StampParams, StatusCodeEnum } from "../common/type";
 import { countStamps, updateUserStamp } from "../services/stamp-services";
 import { getUserById, getUserWithStampsById } from "../services/auth-services";
 

@@ -1,6 +1,5 @@
 import { Router } from "express";
 const router = Router();
-
 import passport from "passport";
 import authMiddleware from "../middlewares/auth-middleware/auth-middleware";
 import { kakaoCallback, findUser } from "../controllers/auth-controller";

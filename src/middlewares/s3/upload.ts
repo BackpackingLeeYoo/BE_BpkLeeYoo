@@ -60,7 +60,7 @@ export const imageUploader = multer({
   fileFilter: fileFilter,
 });
 
-export const multiimageUploader = multer({
+export const multiImageUploader = multer({
   storage: multerS3({
     s3: <any>s3,
     bucket: s3Bucket.bucket,

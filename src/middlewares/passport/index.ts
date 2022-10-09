@@ -49,7 +49,7 @@ const KakaoModule = (app: any) => {
               })
             );
 
-            const user = await User.updateOne(
+            await User.updateOne(
               { _id: newUser._id },
               {
                 $set: {
