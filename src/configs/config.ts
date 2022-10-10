@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-const { DB_USERNAME, DB_PASSWORD } = process.env;
+const { DB_USERNAME, DB_PASSWORD, DB_HOST } = process.env;
 
 const config = {
   development: {
@@ -19,10 +19,10 @@ const config = {
     dialect: "mysql",
   },
   production: {
-    username: "root",
-    password: null,
+    username: DB_USERNAME,
+    password: DB_PASSWORD,
     database: "database_production",
-    host: "127.0.0.1",
+    host: DB_HOST,
     dialect: "mysql",
   },
 };
