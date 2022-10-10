@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import User from "../../models/user-model";
+import User from "../../schemas/user-model";
 import { Request, Response, NextFunction } from "express";
-import { jwtwebtoken } from "../../config/constants";
+import { jwtwebtoken } from "../../configs/constants";
 import { ErrorMessageEnum, StatusCodeEnum } from "../../common/type";
 
 const { UNAUTHORIZED } = StatusCodeEnum;

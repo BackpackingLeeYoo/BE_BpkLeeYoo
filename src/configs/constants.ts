@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const {
+  DB_URL,
   PORT,
   SESSION_SECRET,
   JWT_SECRETKEY,
@@ -13,6 +14,10 @@ const {
   REGION,
   BUCKET,
 } = process.env;
+
+const db = {
+  dbUrl: DB_URL!,
+};
 
 const config = {
   port: PORT!,
@@ -36,4 +41,4 @@ const s3Bucket = {
   region: REGION!,
 };
 
-export { config, jwtwebtoken, kakao, s3Bucket };
+export { db, config, jwtwebtoken, kakao, s3Bucket };

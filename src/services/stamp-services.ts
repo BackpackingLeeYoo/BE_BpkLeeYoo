@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { StampParams } from "../common/type";
-import Stamp from "../models/stamp-model";
+import Stamp from "../schemas/stamp-model";
 
 const YYYY_MM_DD_HH_mm_ss = "YYYY.MM.DD HH:mm:ss";
 

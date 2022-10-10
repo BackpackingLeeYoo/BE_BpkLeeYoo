@@ -1,5 +1,5 @@
 import { ErrorMessageEnum, StatusCodeEnum, UserParams } from "../common/type";
-import User from "../models/user-model";
+import User from "../schemas/user-model";
 
 const getUserById = async (userId: string): Promise<UserParams> => {
   const user = await User.findOne({ _id: userId });

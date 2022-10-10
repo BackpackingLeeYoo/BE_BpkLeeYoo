@@ -1,5 +1,5 @@
-import { Router } from "express";
-const router = Router();
+import express from "express";
+const router = express.Router();
 
 import authRouter from "./auth-router";
 import stampRouter from "./stamp-router";

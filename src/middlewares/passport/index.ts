@@ -1,10 +1,9 @@
 import passport from "passport";
 const KakaoStrategy = require("passport-kakao").Strategy;
-import { kakao } from "../../config/constants";
-import User from "../../models/user-model";
-import Stamp from "../../models/stamp-model";
+import { kakao } from "../../configs/constants";
 import { stamps } from "../../common/stamp-data";
-import { StampParams } from "../../common/type";
+import User from "../../schemas/user-model";
+import Stamp from "../../schemas/stamp-model";
 
 const KakaoModule = (app: any) => {
   app.use(passport.initialize());
@@ -37,15 +36,13 @@ const KakaoModule = (app: any) => {
 
             const newStamps: any = await Promise.all(
               stamps.map(async (stamp) => {
-                const newStamp = await Stamp.create({
+                return await Stamp.create({
                   stampName: stamp.stampName,
                   stampImage: stamp.stampImage,
                   latitude: stamp.latitude,
                   longitude: stamp.longitude,
                   userId: newUser,
                 });
-
-                return newStamp;
               })
             );
 
