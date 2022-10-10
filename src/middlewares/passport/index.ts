@@ -1,9 +1,9 @@
-import User from "../../models/user-model";
 import passport from "passport";
 const KakaoStrategy = require("passport-kakao").Strategy;
-import { kakao } from "../../config/constants";
-import { UserParams } from "../../common/type";
-import { creatUser, getUserByEmail } from "../../services/user-services";
+import { kakao } from "../../configs/constants";
+import { stamps } from "../../common/stamp-data";
+import User from "../../schemas/user-model";
+import Stamp from "../../schemas/stamp-model";
 
 const KakaoModule = (app: any) => {
   app.use(passport.initialize());
@@ -21,22 +21,42 @@ const KakaoModule = (app: any) => {
         done: any
       ) => {
         try {
-          const email = profile._json.kakao_account.email;
-          const existUser: UserParams | null = await getUserByEmail(email);
+          const existUser: typeof User | null = await User.findOne({
+            email: profile._json.kakao_account.email,
+          });
 
           if (existUser) {
-            return done(null, existUser);
+            done(null, existUser);
+          } else {
+            const newUser = await User.create({
+              email: profile._json.kakao_account.email,
+              nickname: profile._json.properties.nickname,
+              profileImg: profile._json.properties.profile_image,
+            });
+
+            const newStamps: any = await Promise.all(
+              stamps.map(async (stamp) => {
+                return await Stamp.create({
+                  stampName: stamp.stampName,
+                  stampImage: stamp.stampImage,
+                  latitude: stamp.latitude,
+                  longitude: stamp.longitude,
+                  userId: newUser,
+                });
+              })
+            );
+
+            await User.updateOne(
+              { _id: newUser._id },
+              {
+                $set: {
+                  stamps: newStamps,
+                },
+              }
+            );
+
+            done(null, newUser);
           }
-
-          const params: UserParams = {
-            email: profile._json.kakao_account.email,
-            nickname: profile._json.properties.nickname,
-            profileImg: profile._json.properties.profile_image,
-          };
-
-          const newUser: UserParams = await creatUser(params);
-
-          return done(null, newUser);
         } catch (error) {
           done(error);
         }

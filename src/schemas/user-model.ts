@@ -15,6 +15,12 @@ const UserSchema = new mongoose.Schema({
   refreshToken: {
     type: String,
   },
+  stamps: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Stamp",
+    },
+  ],
 });
 
 UserSchema.virtual("userId").get(function () {
@@ -25,5 +31,5 @@ UserSchema.set("toJSON", {
   virtuals: true,
 });
 
-const User = mongoose.model("UserRepository", UserSchema);
-export default User;
+const UserM = mongoose.model("User", UserSchema);
+export default UserM;
