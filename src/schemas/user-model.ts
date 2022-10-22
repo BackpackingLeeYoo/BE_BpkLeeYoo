@@ -15,6 +15,10 @@ const UserSchema = new mongoose.Schema({
   refreshToken: {
     type: String,
   },
+  createdAt: {
+    type: String,
+    default: new Date(),
+  },
   stamps: [
     {
       type: mongoose.Schema.Types.ObjectId,

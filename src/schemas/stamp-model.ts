@@ -32,6 +32,11 @@ const StampSchema = new mongoose.Schema({
   },
   createdAt: {
     type: String,
+    default: new Date(),
+  },
+  updatedAt: {
+    type: String,
+    default: new Date(),
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,

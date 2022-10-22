@@ -34,26 +34,26 @@ const KakaoModule = (app: any) => {
               profileImg: profile._json.properties.profile_image,
             });
 
-            // const newStamps: any = await Promise.all(
-            //   stamps.map(async (stamp) => {
-            //     return await Stamp.create({
-            //       stampName: stamp.stampName,
-            //       stampImage: stamp.stampImage,
-            //       latitude: stamp.latitude,
-            //       longitude: stamp.longitude,
-            //       userId: newUser,
-            //     });
-            //   })
-            // );
+            const newStamps: any = await Promise.all(
+              stamps.map(async (stamp) => {
+                return await Stamp.create({
+                  stampName: stamp.stampName,
+                  stampImage: stamp.stampImage,
+                  latitude: stamp.latitude,
+                  longitude: stamp.longitude,
+                  userId: newUser,
+                });
+              })
+            );
 
-            // await User.updateOne(
-            //   { _id: newUser._id },
-            //   {
-            //     $set: {
-            //       stamps: newStamps,
-            //     },
-            //   }
-            // );
+            await User.updateOne(
+              { _id: newUser._id },
+              {
+                $set: {
+                  stamps: newStamps,
+                },
+              }
+            );
 
             done(null, newUser);
           }

@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import { StampParams } from "../common/type";
+import { UpdateStampParams } from "../controllers/stamp-controller";
 import Stamp from "../schemas/stamp-model";
 
 const YYYY_MM_DD_HH_mm_ss = "YYYY.MM.DD HH:mm:ss";
@@ -13,15 +14,10 @@ const countStamps = (stamps: StampParams[]): number => {
 
 const updateUserStamp = async (
   stampId: string,
-  params: {
-    stampImage: string;
-    stampComment: string;
-    weatherTemp: string;
-    weatherIcon: string;
-  }
+  params: UpdateStampParams
 ): Promise<StampParams | null> => {
   const now = dayjs();
-  const createdAt = dayjs(now).format(YYYY_MM_DD_HH_mm_ss);
+  const updatedAt = dayjs(now).format(YYYY_MM_DD_HH_mm_ss);
 
   await Stamp.updateOne(
     { stampId },
@@ -32,7 +28,7 @@ const updateUserStamp = async (
         stampComment: params.stampComment,
         weatherTemp: params.weatherTemp,
         weatherIcon: params.weatherIcon,
-        createdAt,
+        updatedAt,
       },
     }
   );
