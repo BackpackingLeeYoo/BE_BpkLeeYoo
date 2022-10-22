@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import Joi from "joi";
 import { ErrorMessageEnum, StampParams, StatusCodeEnum } from "../common/type";
 import {
   countStamps,
@@ -8,13 +9,20 @@ import {
 import { getUserById, getUserWithStampsById } from "../services/auth-services";
 
 const { OK, BAD_REQUEST, NOT_FOUND } = StatusCodeEnum;
-const { NOT_FOUND_ERROR, BAD_REQUEST_ERROR } = ErrorMessageEnum;
+const { NOT_FOUND_ERROR, BAD_REQUEST_ERROR, VALIDATION_ERROR } =
+  ErrorMessageEnum;
 
 export interface UpdateStampParams {
   stampComment: string;
   weatherTemp: string;
   weatherIcon: string;
 }
+
+const stampSchema = Joi.object({
+  stampComment: Joi.string().required(),
+  weatherTemp: Joi.string().required(),
+  weatherIcon: Joi.string().required(),
+});
 
 const findAllStamps = async (req: Request, res: Response) => {
   try {
@@ -36,32 +44,33 @@ const findAllStamps = async (req: Request, res: Response) => {
   }
 };
 
-// const uploadImage = async (req: Request, res: Response) => {
-//   try {
-//     // const { userId } = res.locals.user;
-//     // await getUserById(userId);
+const uploadImage = async (req: Request, res: Response) => {
+  try {
+    // const { userId } = res.locals.user;
+    // await getUserById(userId);
 
-//     const { stampId } = req.params;
-//     const stampImage = (req.file as Express.MulterS3.File).location;
+    const { stampId } = req.params;
+    const stampImage = (req.file as Express.MulterS3.File).location;
 
-//     const updatedStamp = await uploadStampImage(stampId, stampImage);
+    const updatedStamp = await uploadStampImage(stampId, stampImage);
 
-//     res.status(OK).json({
-//       stampImage: updatedStamp?.stampImage,
-//     });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(BAD_REQUEST).send({
-//       message: BAD_REQUEST_ERROR,
-//     });
-//   }
-// };
+    res.status(OK).json({
+      stampImage: updatedStamp?.stampImage,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(BAD_REQUEST).send({
+      message: BAD_REQUEST_ERROR,
+    });
+  }
+};
 
 const certifyStamp = async (req: Request, res: Response) => {
   try {
     // const { userId } = res.locals.user;
     const { stampId } = req.params;
-    const { stampComment, weatherTemp, weatherIcon } = req.body;
+    const { stampComment, weatherTemp, weatherIcon } =
+      await stampSchema.validateAsync(req.body);
 
     // await getUserById(userId);
 
@@ -79,9 +88,9 @@ const certifyStamp = async (req: Request, res: Response) => {
   } catch (err) {
     console.error(err);
     res.status(BAD_REQUEST).send({
-      message: BAD_REQUEST_ERROR,
+      message: VALIDATION_ERROR,
     });
   }
 };
 
-export { findAllStamps, certifyStamp };
+export { findAllStamps, uploadImage, certifyStamp };

@@ -1,4 +1,3 @@
-// import AWS from "aws-sdk";
 import multer, { FileFilterCallback } from "multer";
 import multerS3 from "multer-s3";
 import { S3Client } from "@aws-sdk/client-s3";
@@ -9,14 +8,6 @@ import { ErrorMessageEnum } from "../../common/type";
 import { s3Bucket } from "../../configs/constants";
 
 type FileNameCallback = (error: Error | null, filename: string) => void;
-
-// AWS.config.update({
-//   accessKeyId: s3Bucket.accesskey,
-//   secretAccessKey: s3Bucket.secretAcesskey,
-//   region: s3Bucket.region,
-// });
-
-// const s3 = new AWS.S3();
 
 const s3 = new S3Client({
   credentials: {

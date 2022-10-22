@@ -14,7 +14,7 @@ passportConfig(app);
 
 app.use(cors());
 app.use(express.json());
-app.use(morgan("tiny"));
+app.use(morgan("combined"));
 app.use(helmet());
 
 app.use(router);
