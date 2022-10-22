@@ -3,8 +3,6 @@ import { StampParams } from "../common/type";
 import { UpdateStampParams } from "../controllers/stamp-controller";
 import Stamp from "../schemas/stamp-model";
 
-const YYYY_MM_DD_HH_mm_ss = "YYYY.MM.DD HH:mm:ss";
-
 const countStamps = (stamps: StampParams[]): number => {
   const isStamp = stamps.filter((stamp) => {
     return stamp.isStamp === true;
@@ -17,14 +15,14 @@ const updateUserStamp = async (
   params: UpdateStampParams
 ): Promise<StampParams | null> => {
   const now = dayjs();
-  const updatedAt = dayjs(now).format(YYYY_MM_DD_HH_mm_ss);
+  const updatedAt = dayjs(now).unix() * 1000;
 
   await Stamp.updateOne(
-    { stampId },
+    { _id: stampId },
     {
       $set: {
-        stampImage: params.stampImage,
         isStamp: true,
+        stampImage: params.stampImage,
         stampComment: params.stampComment,
         weatherTemp: params.weatherTemp,
         weatherIcon: params.weatherIcon,
@@ -34,7 +32,7 @@ const updateUserStamp = async (
   );
 
   return await Stamp.findOne({
-    stampId,
+    _id: stampId,
   });
 };
 

@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
+import Joi from "joi";
 import { ErrorMessageEnum, StampParams, StatusCodeEnum } from "../common/type";
 import { countStamps, updateUserStamp } from "../services/stamp-services";
 import { getUserById, getUserWithStampsById } from "../services/auth-services";
 
 const { OK, BAD_REQUEST, NOT_FOUND } = StatusCodeEnum;
-const { NOT_FOUND_ERROR, BAD_REQUEST_ERROR } = ErrorMessageEnum;
+const { NOT_FOUND_ERROR, BAD_REQUEST_ERROR, VALIDATION_ERROR } =
+  ErrorMessageEnum;
 
 export interface UpdateStampParams {
   stampImage: string;
@@ -12,6 +14,12 @@ export interface UpdateStampParams {
   weatherTemp: string;
   weatherIcon: string;
 }
+
+const stampSchema = Joi.object({
+  stampComment: Joi.string().required(),
+  weatherTemp: Joi.string().required(),
+  weatherIcon: Joi.string().required(),
+});
 
 const findAllStamps = async (req: Request, res: Response) => {
   try {
@@ -37,8 +45,10 @@ const certifyStamp = async (req: Request, res: Response) => {
   try {
     const { userId } = res.locals.user;
     const { stampId } = req.params;
-    const { stampComment, weatherTemp, weatherIcon, stampImage } = req.body;
-    // const stampImage = (req.file as Express.MulterS3.File).location;
+    const { stampComment, weatherTemp, weatherIcon } =
+      await stampSchema.validateAsync(req.body);
+
+    const stampImage = (req.file as Express.MulterS3.File).location;
 
     await getUserById(userId);
 
@@ -57,7 +67,7 @@ const certifyStamp = async (req: Request, res: Response) => {
   } catch (err) {
     console.error(err);
     res.status(BAD_REQUEST).send({
-      message: BAD_REQUEST_ERROR,
+      message: VALIDATION_ERROR,
     });
   }
 };
