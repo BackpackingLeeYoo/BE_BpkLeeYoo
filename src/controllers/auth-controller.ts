@@ -4,7 +4,6 @@ import passport from "passport";
 import { jwtwebtoken } from "../configs/constants";
 import { ErrorMessageEnum, StatusCodeEnum, UserParams } from "../common/type";
 import { getUserById } from "../services/auth-services";
-import { User } from "../models/user";
 
 const kakaoCallback = (req: Request, res: Response, next: NextFunction) => {
   passport.authenticate(
@@ -50,25 +49,4 @@ const findUser = async (req: Request, res: Response) => {
   }
 };
 
-const createUser = async (req: Request, res: Response) => {
-  try {
-    const { email, nickname, profileImg } = req.body;
-
-    const newUser = await User.create({
-      email,
-      nickname,
-      profileImg,
-    });
-
-    res.status(StatusCodeEnum.OK).json({
-      newUser,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(StatusCodeEnum.NOT_FOUND).send({
-      message: ErrorMessageEnum.NOT_FOUND_USER,
-    });
-  }
-};
-
-export { kakaoCallback, findUser, createUser };
+export { kakaoCallback, findUser };
