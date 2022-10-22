@@ -32,7 +32,7 @@ const updateUserStamp = async (
   );
 
   return await Stamp.findOne({
-    stampId,
+    _id: stampId,
   });
 };
 
