@@ -18,7 +18,7 @@ const updateUserStamp = async (
   const updatedAt = dayjs(now).unix() * 1000;
 
   await Stamp.updateOne(
-    { stampId },
+    { _id: stampId },
     {
       $set: {
         isStamp: true,
