@@ -36,26 +36,26 @@ const findAllStamps = async (req: Request, res: Response) => {
   }
 };
 
-const uploadImage = async (req: Request, res: Response) => {
-  try {
-    // const { userId } = res.locals.user;
-    // await getUserById(userId);
+// const uploadImage = async (req: Request, res: Response) => {
+//   try {
+//     // const { userId } = res.locals.user;
+//     // await getUserById(userId);
 
-    const { stampId } = req.params;
-    const stampImage = (req.file as Express.MulterS3.File).location;
+//     const { stampId } = req.params;
+//     const stampImage = (req.file as Express.MulterS3.File).location;
 
-    const updatedStamp = await uploadStampImage(stampId, stampImage);
+//     const updatedStamp = await uploadStampImage(stampId, stampImage);
 
-    res.status(OK).json({
-      stampImage: updatedStamp?.stampImage,
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(BAD_REQUEST).send({
-      message: BAD_REQUEST_ERROR,
-    });
-  }
-};
+//     res.status(OK).json({
+//       stampImage: updatedStamp?.stampImage,
+//     });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(BAD_REQUEST).send({
+//       message: BAD_REQUEST_ERROR,
+//     });
+//   }
+// };
 
 const certifyStamp = async (req: Request, res: Response) => {
   try {
@@ -84,4 +84,4 @@ const certifyStamp = async (req: Request, res: Response) => {
   }
 };
 
-export { findAllStamps, uploadImage, certifyStamp };
+export { findAllStamps, certifyStamp };
