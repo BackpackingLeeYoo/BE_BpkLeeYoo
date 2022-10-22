@@ -16,6 +16,7 @@ export enum ErrorMessageEnum {
   NOT_FOUND_USER = "사용자 정보를 찾을 수 없습니다.",
   NOT_FOUND_ERROR = "요청한 정보를 찾을 수 없습니다.",
   WRONG_EXTENSION = "잘못된 파일 형식입니다.",
+  VALIDATION_ERROR = "잘못된 요청 양식입니다.",
 }
 export interface UserParams {
   userId?: string;
