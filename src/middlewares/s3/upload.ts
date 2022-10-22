@@ -1,6 +1,7 @@
-import AWS from "aws-sdk";
+// import AWS from "aws-sdk";
 import multer, { FileFilterCallback } from "multer";
 import multerS3 from "multer-s3";
+import { S3Client } from "@aws-sdk/client-s3";
 import path from "path";
 import dayjs from "dayjs";
 import { Request } from "express";
@@ -9,13 +10,21 @@ import { s3Bucket } from "../../configs/constants";
 
 type FileNameCallback = (error: Error | null, filename: string) => void;
 
-AWS.config.update({
-  accessKeyId: s3Bucket.accesskey,
-  secretAccessKey: s3Bucket.secretAcesskey,
+// AWS.config.update({
+//   accessKeyId: s3Bucket.accesskey,
+//   secretAccessKey: s3Bucket.secretAcesskey,
+//   region: s3Bucket.region,
+// });
+
+// const s3 = new AWS.S3();
+
+const s3 = new S3Client({
+  credentials: {
+    accessKeyId: s3Bucket.accesskey,
+    secretAccessKey: s3Bucket.secretAcesskey,
+  },
   region: s3Bucket.region,
 });
-
-const s3 = new AWS.S3();
 
 const fileFilter = (
   req: Request,
@@ -34,7 +43,7 @@ const fileFilter = (
 };
 
 export const s3Storage = multerS3({
-  s3: <any>s3,
+  s3,
   bucket: s3Bucket.bucket,
   acl: "public-read",
   contentType: multerS3.AUTO_CONTENT_TYPE,
