@@ -31,11 +31,11 @@ const StampSchema = new mongoose.Schema({
     type: String,
   },
   createdAt: {
-    type: String,
+    type: Number,
     default: new Date(),
   },
   updatedAt: {
-    type: String,
+    type: Number,
     default: new Date(),
   },
   userId: {

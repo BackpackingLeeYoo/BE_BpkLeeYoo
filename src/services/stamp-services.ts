@@ -17,7 +17,7 @@ const updateUserStamp = async (
   params: UpdateStampParams
 ): Promise<StampParams | null> => {
   const now = dayjs();
-  const updatedAt = dayjs(now).format(YYYY_MM_DD_HH_mm_ss);
+  const updatedAt = dayjs(now).unix() * 1000;
 
   await Stamp.updateOne(
     { stampId },

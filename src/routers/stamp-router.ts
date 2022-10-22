@@ -5,7 +5,7 @@ import { findAllStamps, certifyStamp } from "../controllers/stamp-controller";
 // import { imageUploader } from "../middlewares/s3/upload";
 
 router.get("/", authMiddleware, findAllStamps);
-router.post("/:stampId", authMiddleware, certifyStamp);
+router.put("/:stampId", certifyStamp);
 
 export default router;
 
