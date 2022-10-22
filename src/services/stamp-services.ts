@@ -3,31 +3,11 @@ import { StampParams } from "../common/type";
 import { UpdateStampParams } from "../controllers/stamp-controller";
 import Stamp from "../schemas/stamp-model";
 
-const YYYY_MM_DD_HH_mm_ss = "YYYY.MM.DD HH:mm:ss";
-
 const countStamps = (stamps: StampParams[]): number => {
   const isStamp = stamps.filter((stamp) => {
     return stamp.isStamp === true;
   });
   return isStamp.length;
-};
-
-const uploadStampImage = async (
-  stampId: string,
-  stampImage: string
-): Promise<StampParams | null> => {
-  await Stamp.updateOne(
-    { stampId },
-    {
-      $set: {
-        stampImage: stampImage,
-      },
-    }
-  );
-
-  return await Stamp.findOne({
-    stampId,
-  });
 };
 
 const updateUserStamp = async (
@@ -42,6 +22,7 @@ const updateUserStamp = async (
     {
       $set: {
         isStamp: true,
+        stampImage: params.stampImage,
         stampComment: params.stampComment,
         weatherTemp: params.weatherTemp,
         weatherIcon: params.weatherIcon,
@@ -55,4 +36,4 @@ const updateUserStamp = async (
   });
 };
 
-export { countStamps, uploadStampImage, updateUserStamp };
+export { countStamps, updateUserStamp };
