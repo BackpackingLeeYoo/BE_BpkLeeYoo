@@ -43,14 +43,14 @@ const findAllStamps = async (req: Request, res: Response) => {
 
 const certifyStamp = async (req: Request, res: Response) => {
   try {
-    // const { userId } = res.locals.user;
+    const { userId } = res.locals.user;
     const { stampId } = req.params;
     const { stampComment, weatherTemp, weatherIcon } =
       await stampSchema.validateAsync(req.body);
 
     const stampImage = (req.file as Express.MulterS3.File).location;
 
-    // await getUserById(userId);
+    await getUserById(userId);
 
     const params: UpdateStampParams = {
       stampImage,
