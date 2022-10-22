@@ -23,6 +23,7 @@ export interface UserParams {
   nickname: string;
   profileImg?: string;
   refreshToken?: string;
+  createdAt?: string;
   stamps: StampParams[] | StampsParams[];
 }
 
@@ -37,6 +38,7 @@ export interface StampParams {
   weatherTemp?: string;
   weatherIcon?: string;
   createdAt?: string;
+  updatedAt?: string;
   userId?: Types.ObjectId;
 }
 
