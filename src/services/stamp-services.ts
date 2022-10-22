@@ -12,6 +12,24 @@ const countStamps = (stamps: StampParams[]): number => {
   return isStamp.length;
 };
 
+const uploadStampImage = async (
+  stampId: string,
+  stampImage: string
+): Promise<StampParams | null> => {
+  await Stamp.updateOne(
+    { stampId },
+    {
+      $set: {
+        stampImage: stampImage,
+      },
+    }
+  );
+
+  return await Stamp.findOne({
+    stampId,
+  });
+};
+
 const updateUserStamp = async (
   stampId: string,
   params: UpdateStampParams
@@ -23,7 +41,6 @@ const updateUserStamp = async (
     { stampId },
     {
       $set: {
-        stampImage: params.stampImage,
         isStamp: true,
         stampComment: params.stampComment,
         weatherTemp: params.weatherTemp,
@@ -38,4 +55,4 @@ const updateUserStamp = async (
   });
 };
 
-export { countStamps, updateUserStamp };
+export { countStamps, uploadStampImage, updateUserStamp };

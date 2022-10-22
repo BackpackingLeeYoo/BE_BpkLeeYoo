@@ -17,21 +17,21 @@ AWS.config.update({
 
 const s3 = new AWS.S3();
 
-const fileFilter = (
-  req: Request,
-  file: Express.MulterS3.File,
-  cb: FileFilterCallback
-) => {
-  if (
-    file.mimetype === "image/png" ||
-    file.mimetype === "image/jpg" ||
-    file.mimetype === "image/jpeg"
-  ) {
-    cb(null, true);
-  } else {
-    return cb(new Error(ErrorMessageEnum.WRONG_EXTENSION));
-  }
-};
+// const fileFilter = (
+//   req: Request,
+//   file: Express.MulterS3.File,
+//   cb: FileFilterCallback
+// ) => {
+//   if (
+//     file.mimetype === "image/png" ||
+//     file.mimetype === "image/jpg" ||
+//     file.mimetype === "image/jpeg"
+//   ) {
+//     cb(null, true);
+//   } else {
+//     return cb(new Error(ErrorMessageEnum.WRONG_EXTENSION));
+//   }
+// };
 
 export const imageUploader = multer({
   storage: multerS3({
@@ -39,11 +39,7 @@ export const imageUploader = multer({
     bucket: s3Bucket.bucket,
     acl: "public-read",
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    key: function (
-      req: Request,
-      file: Express.MulterS3.File,
-      cb: FileNameCallback
-    ) {
+    key(req: Request, file: Express.MulterS3.File, cb: FileNameCallback) {
       cb(
         null,
         `stampImage/${dayjs().format("YYYY/MM/DD")}_${path.basename(
@@ -52,7 +48,7 @@ export const imageUploader = multer({
       );
     },
   }),
-  fileFilter,
+  // fileFilter,
 });
 
 // export const multiImageUploader = multer({
