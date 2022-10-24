@@ -48,7 +48,11 @@ const certifyStamp = async (req: Request, res: Response) => {
     const { stampComment, weatherTemp, weatherIcon } =
       await stampSchema.validateAsync(req.body);
 
-    const stampImage = (req.file as Express.MulterS3.File).location;
+    // const stampImage = (req.file as Express.MulterS3.File).location;
+
+    const stampImage = `https://bpk-leeyoo.s3.ap-northeast-2.amazonaws.com/${
+      (req.file as Express.MulterS3.File).key
+    }`;
 
     await getUserById(userId);
 
