@@ -47,7 +47,7 @@ const certifyStamp = async (req: Request, res: Response) => {
     const { stampId } = req.params;
     const { stampComment, weatherTemp, weatherIcon } =
       await stampSchema.validateAsync(req.body);
-    console.log(req.file);
+
     const stampImage = (req.file as Express.MulterS3.File).location;
 
     await getUserById(userId);
