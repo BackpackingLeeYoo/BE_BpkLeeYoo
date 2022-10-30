@@ -49,13 +49,11 @@ const findStamp = async (req: Request, res: Response) => {
     const { userId } = res.locals.user;
     const { stampId } = req.body;
 
-    const user = await getUserById(userId);
+    await getUserById(userId);
 
-    const stamp = await getStamp(userId, stampId);
+    const stamp = await getStamp(stampId);
 
     res.status(OK).json({
-      nickname: user.nickname,
-      profileImg: user.profileImg,
       stamp,
     });
   } catch (err) {
