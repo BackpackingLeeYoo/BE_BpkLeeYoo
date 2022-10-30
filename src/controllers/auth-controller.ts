@@ -6,7 +6,7 @@ import { ErrorMessageEnum, StatusCodeEnum, UserParams } from "../common/type";
 import { getUserById } from "../services/auth-services";
 
 const kakaoCallback = (req: Request, res: Response, next: NextFunction) => {
-  console.log(req.header);
+  console.log(req);
   passport.authenticate(
     "kakao",
     { failureRedirect: "/" },
