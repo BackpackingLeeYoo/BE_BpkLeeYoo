@@ -1,12 +1,15 @@
 import { Request, Response } from "express";
 import Joi from "joi";
 import { ErrorMessageEnum, StampParams, StatusCodeEnum } from "../common/type";
-import { countStamps, updateUserStamp } from "../services/stamp-services";
+import {
+  countStamps,
+  getStamp,
+  updateUserStamp,
+} from "../services/stamp-services";
 import { getUserById, getUserWithStampsById } from "../services/auth-services";
 
 const { OK, BAD_REQUEST, NOT_FOUND } = StatusCodeEnum;
-const { NOT_FOUND_ERROR, BAD_REQUEST_ERROR, VALIDATION_ERROR } =
-  ErrorMessageEnum;
+const { NOT_FOUND_ERROR, VALIDATION_ERROR } = ErrorMessageEnum;
 
 export interface UpdateStampParams {
   stampImage: string;
@@ -32,6 +35,26 @@ const findAllStamps = async (req: Request, res: Response) => {
     res.status(OK).json({
       stamps,
       isStampCount,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(NOT_FOUND).send({
+      message: NOT_FOUND_ERROR,
+    });
+  }
+};
+
+const findStamp = async (req: Request, res: Response) => {
+  try {
+    const { userId } = res.locals.user;
+    const { stampId } = req.body;
+
+    await getUserById(userId);
+
+    const stamp = await getStamp(stampId);
+
+    res.status(OK).json({
+      stamp,
     });
   } catch (err) {
     console.error(err);
@@ -76,4 +99,4 @@ const certifyStamp = async (req: Request, res: Response) => {
   }
 };
 
-export { findAllStamps, certifyStamp };
+export { findAllStamps, findStamp, certifyStamp };

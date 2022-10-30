@@ -10,6 +10,10 @@ const countStamps = (stamps: StampParams[]): number => {
   return isStamp.length;
 };
 
+const getStamp = async (stampId: number): Promise<StampParams | null> => {
+  return await Stamp.findOne({ _id: stampId }).populate("userId");
+};
+
 const updateUserStamp = async (
   stampId: string,
   params: UpdateStampParams
@@ -36,4 +40,4 @@ const updateUserStamp = async (
   });
 };
 
-export { countStamps, updateUserStamp };
+export { countStamps, getStamp, updateUserStamp };
