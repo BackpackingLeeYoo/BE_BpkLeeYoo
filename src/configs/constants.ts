@@ -4,7 +4,6 @@ dotenv.config();
 const {
   DB_URL,
   PORT,
-  SESSION_SECRET,
   JWT_SECRETKEY,
   JWT_EXPIREIN,
   KAKAO_ID,
@@ -21,7 +20,6 @@ const db = {
 
 const config = {
   port: PORT!,
-  sessionSecret: SESSION_SECRET!,
 };
 
 const jwtwebtoken = {
