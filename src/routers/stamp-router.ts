@@ -9,7 +9,7 @@ import {
 import { imageUploader } from "../middlewares/s3/upload";
 
 router.get("/", authMiddleware, findAllStamps);
-router.get("/:stampId", findStamp);
+router.get("/:stampId", authMiddleware, findStamp);
 router.put(
   "/:stampId",
   authMiddleware,
