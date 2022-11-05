@@ -46,10 +46,10 @@ const findAllStamps = async (req: Request, res: Response) => {
 
 const findStamp = async (req: Request, res: Response) => {
   try {
-    const { userId } = res.locals.user;
+    // const { userId } = res.locals.user;
     const { stampId } = req.params;
 
-    await getUserById(userId);
+    // await getUserById(userId);
 
     const stamp = await getStamp(stampId);
 
