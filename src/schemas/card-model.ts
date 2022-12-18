@@ -19,7 +19,7 @@ const CardSchema = new mongoose.Schema({
   },
 });
 
-CardSchema.virtual("stampId").get(function () {
+CardSchema.virtual("cardId").get(function () {
   return this._id.toHexString();
 });
 
