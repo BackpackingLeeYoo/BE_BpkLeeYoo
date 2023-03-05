@@ -1,31 +1,17 @@
-import { ErrorMessageEnum, StatusCodeEnum, UserParams } from "../common/type";
-import User from "../schemas/user-model";
+import { User } from "../models/user";
 
 export class UserRepository {
-  constructor() {}
+  constructor(private readonly user: User) {}
+
+  getUserById = async (userId: number): Promise<User> => {
+    return await User.findByPk(userId);
+  };
+
+  getUserByEmail = async (email: string): Promise<User> => {
+    return await User.findOne({ where: { email } });
+  };
+
+  getUserWithStampsById = async (userId: string): Promise<UserParams> => {
+    return await User.findOne({ _id: userId }).populate("stamps");
+  };
 }
-
-const getUserById = async (userId: string): Promise<UserParams> => {
-  const user = await User.findOne({ _id: userId });
-  return isUser(user);
-};
-
-const getUserWithStampsById = async (userId: string): Promise<UserParams> => {
-  const user = await User.findOne({ _id: userId }).populate("stamps");
-  return isUser(user);
-};
-
-const getUserByEmail = async (email: string): Promise<UserParams> => {
-  const user = await User.findOne({ email });
-  return isUser(user);
-};
-
-const isUser = (user: UserParams | null): UserParams => {
-  if (!user) {
-    throw new Error(ErrorMessageEnum.NOT_FOUND_USER);
-  }
-
-  return user;
-};
-
-export { getUserById, getUserWithStampsById, getUserByEmail };

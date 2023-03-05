@@ -1,9 +1,8 @@
 import passport from "passport";
 const KakaoStrategy = require("passport-kakao").Strategy;
 import { kakao } from "../../common/constants";
-import { stamps } from "../../common/stamp-data";
-import User from "../../schemas/user-model";
-import Stamp from "../../schemas/stamp-model";
+import { User } from "src/models/user";
+import { TypeChecker } from "src/common/type-checker";
 
 export const KakaoModule = (app: any) => {
   app.use(passport.initialize());
@@ -21,18 +20,23 @@ export const KakaoModule = (app: any) => {
         done: any
       ) => {
         try {
-          const existUser: typeof User | null = await User.findOne({
-            email: profile._json.kakao_account.email,
+          const user = await User.findOne({
+            where: {
+              email: profile._json.kakao_account.email,
+            },
           });
 
-          if (existUser) {
-            done(null, existUser);
+          if (TypeChecker.isNull(user)) {
+            done(null, user);
           } else {
             const newUser = await User.create({
               email: profile._json.kakao_account.email,
               nickname: profile._json.properties.nickname,
               profileImg: profile._json.properties.profile_image,
             });
+
+            const stamps = await Stamp.findAll();
+
 
             const newStamps: any = await Promise.all(
               stamps.map(async (stamp) => {

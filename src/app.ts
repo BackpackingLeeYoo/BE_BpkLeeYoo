@@ -1,3 +1,4 @@
+import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
@@ -10,6 +11,8 @@ import {
   errorHandler,
   errorLogger,
 } from "./middlewares/error-handler/error-handler-middleware";
+
+dotenv.config();
 
 const app = express();
 const port = config.port;
@@ -28,4 +31,13 @@ app.use(router);
 
 app.listen(port, () => {
   console.log(port, "Server is listening...");
+
+  await sequelize
+    .authenticate()
+    .then(async () => {
+      console.log("connection success");
+    })
+    .catch((error) => {
+      console.log("error message : ", error);
+    });
 });
