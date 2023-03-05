@@ -1,13 +1,17 @@
 import jwt from "jsonwebtoken";
 import User from "../../schemas/user-model";
 import { Request, Response, NextFunction } from "express";
-import { jwtwebtoken } from "../../configs/constants";
+import { jwtwebtoken } from "../../common/constants";
 import { ErrorMessageEnum, StatusCodeEnum } from "../../common/type";
 
 const { UNAUTHORIZED } = StatusCodeEnum;
 const { UNAUTHORIZED_ERROR, NOT_FOUND_USER } = ErrorMessageEnum;
 
-const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
+export const AuthMiddleware = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const { authorization } = req.headers;
   const [authType, authToken] = (authorization || "").split(" ");
 
@@ -31,5 +35,3 @@ const AuthMiddleware = (req: Request, res: Response, next: NextFunction) => {
     });
   }
 };
-
-export default AuthMiddleware;

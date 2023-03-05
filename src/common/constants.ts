@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const {
-  DB_URL,
+  DOMAIN_MONGODB_URL,
   PORT,
   JWT_SECRETKEY,
   JWT_EXPIREIN,
@@ -15,7 +15,7 @@ const {
 } = process.env;
 
 const db = {
-  dbUrl: DB_URL!,
+  dbUrl: DOMAIN_MONGODB_URL!,
 };
 
 const config = {

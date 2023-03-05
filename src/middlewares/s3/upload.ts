@@ -5,7 +5,7 @@ import path from "path";
 import dayjs from "dayjs";
 import { Request } from "express";
 import { ErrorMessageEnum } from "../../common/type";
-import { s3Bucket } from "../../configs/constants";
+import { s3Bucket } from "../../common/constants";
 
 type FileNameCallback = (error: Error | null, filename: string) => void;
 

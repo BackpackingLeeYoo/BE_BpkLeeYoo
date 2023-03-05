@@ -1,6 +1,10 @@
 import { ErrorMessageEnum, StatusCodeEnum, UserParams } from "../common/type";
 import User from "../schemas/user-model";
 
+export class UserRepository {
+  constructor() {}
+}
+
 const getUserById = async (userId: string): Promise<UserParams> => {
   const user = await User.findOne({ _id: userId });
   return isUser(user);

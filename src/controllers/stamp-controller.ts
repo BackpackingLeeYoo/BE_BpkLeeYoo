@@ -4,6 +4,7 @@ import { ErrorMessageEnum, StampParams, StatusCodeEnum } from "../common/type";
 import {
   countStamps,
   getStamp,
+  StampService,
   updateUserStamp,
 } from "../services/stamp-services";
 import { getUserById, getUserWithStampsById } from "../services/auth-services";
@@ -18,85 +19,91 @@ export interface UpdateStampParams {
   weatherIcon: string;
 }
 
-const stampSchema = Joi.object({
+export const stampSchema = Joi.object({
   stampComment: Joi.string().required(),
   weatherTemp: Joi.string().required(),
   weatherIcon: Joi.string().required(),
 });
 
-const findAllStamps = async (req: Request, res: Response) => {
-  try {
-    const { userId } = res.locals.user;
-    const user = await getUserWithStampsById(userId);
+export class StampController {
+  private readonly stampService: StampService;
 
-    const stamps = user.stamps as StampParams[];
-    const isStampCount = countStamps(stamps);
-
-    res.status(OK).json({
-      stamps,
-      isStampCount,
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(NOT_FOUND).send({
-      message: NOT_FOUND_ERROR,
-    });
+  constructor() {
+    this.stampService = new StampService();
   }
-};
 
-const findStamp = async (req: Request, res: Response) => {
-  try {
-    const { userId } = res.locals.user;
-    const { stampId } = req.params;
+  getAllStamps = async (req: Request, res: Response) => {
+    try {
+      const { userId } = res.locals.user;
+      const user = await getUserWithStampsById(userId);
 
-    await getUserById(userId);
+      const stamps = user.stamps as StampParams[];
+      const isStampCount = countStamps(stamps);
 
-    const stamp = await getStamp(stampId);
+      res.status(OK).json({
+        stamps,
+        isStampCount,
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(NOT_FOUND).send({
+        message: NOT_FOUND_ERROR,
+      });
+    }
+  };
 
-    res.status(OK).json({
-      stamp,
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(NOT_FOUND).send({
-      message: NOT_FOUND_ERROR,
-    });
-  }
-};
+  getStamp = async (req: Request, res: Response) => {
+    try {
+      const { userId } = res.locals.user;
+      const { stampId } = req.params;
 
-const certifyStamp = async (req: Request, res: Response) => {
-  try {
-    const { userId } = res.locals.user;
-    const { stampId } = req.params;
-    const { stampComment, weatherTemp, weatherIcon } =
-      await stampSchema.validateAsync(req.body);
+      await getUserById(userId);
 
-    // const stampImage = (req.file as Express.MulterS3.File).location;
+      const stamp = await getStamp(stampId);
 
-    const stampImage = `https://bpk-leeyoo.s3.ap-northeast-2.amazonaws.com/${
-      (req.file as Express.MulterS3.File).key
-    }`;
+      res.status(OK).json({
+        stamp,
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(NOT_FOUND).send({
+        message: NOT_FOUND_ERROR,
+      });
+    }
+  };
 
-    await getUserById(userId);
+  certifyStamp = async (req: Request, res: Response) => {
+    try {
+      const { userId } = res.locals.user;
+      const { stampId } = req.params;
+      const { stampComment, weatherTemp, weatherIcon } =
+        await stampSchema.validateAsync(req.body);
 
-    const params: UpdateStampParams = {
-      stampImage,
-      stampComment,
-      weatherTemp,
-      weatherIcon,
-    };
+      // const stampImage = (req.file as Express.MulterS3.File).location;
 
-    const certifiedUserStamp = await updateUserStamp(stampId, params);
+      const stampImage = `https://bpk-leeyoo.s3.ap-northeast-2.amazonaws.com/${
+        (req.file as Express.MulterS3.File).key
+      }`;
 
-    res.status(OK).json({
-      certifiedUserStamp,
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(BAD_REQUEST).send({
-      message: VALIDATION_ERROR,
-    });
-  }
-};
+      await getUserById(userId);
 
-export { findAllStamps, findStamp, certifyStamp };
+      const params: UpdateStampParams = {
+        stampImage,
+        stampComment,
+        weatherTemp,
+        weatherIcon,
+      };
+
+      const certifiedUserStamp = await updateUserStamp(stampId, params);
+
+      res.status(OK).json({
+        certifiedUserStamp,
+      });
+    } catch (err) {
+      console.error(err);
+      res.status(BAD_REQUEST).send({
+        message: VALIDATION_ERROR,
+      });
+    }
+  };
+}
