@@ -1,18 +1,18 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import passport from "passport";
+import { User } from "src/models/user";
 import { jwtwebtoken } from "../common/constants";
-import { UserParams } from "../common/type";
 
 export class AuthController {
   kakaoCallback = (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate(
       "kakao",
       { failureRedirect: "/" },
-      (err: Error, user: UserParams) => {
+      (err: Error, user: User) => {
         if (err) return next(err);
 
-        const payload = { userId: user.userId };
+        const payload = { userId: user.id };
 
         const options = {
           expiresIn: jwtwebtoken.expiresIn,

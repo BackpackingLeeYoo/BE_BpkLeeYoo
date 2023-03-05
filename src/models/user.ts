@@ -3,12 +3,17 @@ import { sequelize } from "./index";
 import { UserStamp } from "./user-stamp";
 
 interface UserAttributes {
+  id: number;
   email: string;
   nickname: string;
   profileImg: string;
 }
 
 export class User extends Model<UserAttributes> {
+  static findById(userId: any) {
+    throw new Error("Method not implemented.");
+  }
+  public readonly id!: number;
   public email!: string;
   public nickname!: string;
   public profileImg!: string;
@@ -22,6 +27,12 @@ export class User extends Model<UserAttributes> {
 
 User.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -53,42 +64,3 @@ User.hasMany(UserStamp, {
   foreignKey: "userId",
   as: "userHasManyUserStamp",
 });
-
-/*
-const Sequelize = require("sequelize");
-
-export class User extends Sequelize.Model {
-  static init(sequelize) {
-    return super.init(
-      {
-        email: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-        nickname: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
-        profileImg: {
-          type: Sequelize.STRING,
-          allowNull: true,
-        },
-      },
-      {
-        sequelize,
-        timestamps: true,
-        underscored: false,
-        paranoid: true, //soft delete 기능
-        modelName: "User",
-        tableName: "users",
-        charset: "utf8mb4",
-        collate: "utf8mb4_general_ci",
-      }
-    );
-  }
-
-  static associate(db) {
-    db.User.hasMany(db.UserStamp, { foreignKey: "userId", sourceKey: "id" });
-  }
-}
-*/

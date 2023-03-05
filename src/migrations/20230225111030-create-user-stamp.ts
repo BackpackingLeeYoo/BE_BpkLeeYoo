@@ -29,6 +29,10 @@ module.exports = {
         onDelete: "cascade",
         onUpdate: "cascade",
       },
+      stampName: {
+        type: Sequelize.DataTypes.STRING(50),
+        allowNull: false,
+      },
       isStamp: {
         type: Sequelize.DataTypes.BOOLEAN,
         allowNull: false,
@@ -40,7 +44,7 @@ module.exports = {
       },
       stampComment: {
         type: Sequelize.DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       weatherTemp: {
         type: Sequelize.DataTypes.STRING(10),
@@ -49,6 +53,10 @@ module.exports = {
       weatherIcon: {
         type: Sequelize.DataTypes.STRING(10),
         allowNull: true,
+      },
+      registrationAt: {
+        allowNull: true,
+        type: Sequelize.DataTypes.DATE,
       },
       createdAt: {
         allowNull: false,

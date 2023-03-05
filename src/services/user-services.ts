@@ -1,31 +1,18 @@
-import { ErrorMessageEnum, StatusCodeEnum, UserParams } from "../common/type";
-import User from "../schemas/user-model";
+import { NotFoundException } from "src/common/exceptions/not-found.exception";
+import { TypeChecker } from "src/common/type-checker";
+import { User } from "src/models/user";
+import { UserRepository } from "src/repositories/user.repository";
 
 export class UserService {
-  constructor() {}
+  constructor(private readonly userRepository: UserRepository) {}
+
+  public findUser = async (userId: number): Promise<User> => {
+    const user = await this.userRepository.findUserById(userId);
+
+    if (TypeChecker.isNull(user)) {
+      throw new NotFoundException("사용자를 찾을 수 없습니다.");
+    }
+
+    return user;
+  };
 }
-
-const getUserById = async (userId: string): Promise<UserParams> => {
-  const user = await User.findOne({ _id: userId });
-  return isUser(user);
-};
-
-const getUserWithStampsById = async (userId: string): Promise<UserParams> => {
-  const user = await User.findOne({ _id: userId }).populate("stamps");
-  return isUser(user);
-};
-
-const getUserByEmail = async (email: string): Promise<UserParams> => {
-  const user = await User.findOne({ email });
-  return isUser(user);
-};
-
-const isUser = (user: UserParams | null): UserParams => {
-  if (!user) {
-    throw new Error(ErrorMessageEnum.NOT_FOUND_USER);
-  }
-
-  return user;
-};
-
-export { getUserById, getUserWithStampsById, getUserByEmail };

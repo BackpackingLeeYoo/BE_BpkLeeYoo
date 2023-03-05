@@ -1,7 +1,7 @@
-export class InvalidParamsError extends Error {
+export class InvalidParamsException extends Error {
   private readonly status: number;
 
-  constructor(message: string, status: number) {
+  constructor(message?: string, status?: number) {
     super(message);
     this.status = status || 409;
     this.name = "InvalidParamsError";
