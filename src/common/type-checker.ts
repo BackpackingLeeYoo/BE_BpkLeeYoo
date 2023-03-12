@@ -4,11 +4,11 @@ export class TypeChecker {
   }
 
   public static isBlank(value: string) {
-    return value == '';
+    return value == "";
   }
 
   public static isNumeric(str: string) {
-    if (typeof str != 'string') {
+    if (typeof str != "string") {
       return false;
     }
 

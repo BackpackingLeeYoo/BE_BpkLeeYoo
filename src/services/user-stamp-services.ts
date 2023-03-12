@@ -1,86 +1,90 @@
 import dayjs from "dayjs";
-import { NotFoundException } from "src/common/exceptions/not-found.exception";
-import { TypeChecker } from "src/common/type-checker";
-import { UserStamp } from "src/models/user-stamp";
-import { UserStampRepository } from "src/repositories/user-stamp.repository";
+import { NotFoundException } from "../common/exceptions/not-found.exception";
+import { TypeChecker } from "../common/type-checker";
+import { UserStamp } from "../models/user-stamp";
+import * as userStampRepository from "../repositories/user-stamp.repository";
 
-export class UserStampService {
-  constructor(private readonly userStampRepository: UserStampRepository) {}
+const findAllUserStamp = async (userId: number): Promise<UserStamp[]> => {
+  const userStamps = await userStampRepository.findAllUserStamp(userId);
+  console.log(userStamps);
 
-  public findAllUserStamp = async (userId: number): Promise<UserStamp[]> => {
-    const userStamps = await this.userStampRepository.findAllUserStamp(userId);
-    console.log(userStamps);
+  if (TypeChecker.isEmptyArray(userStamps)) {
+    throw new NotFoundException("등록된 스탬프가 없습니다.");
+  }
 
-    if (TypeChecker.isEmptyArray(userStamps)) {
-      throw new NotFoundException("등록된 스탬프가 없습니다.");
-    }
+  const result = userStamps.sort((a, b) =>
+    a.stampName.toLowerCase() < b.stampName.toLowerCase() ? -1 : 1
+  );
 
-    const result = userStamps.sort((a, b) =>
-      a.stampName.toLowerCase() < b.stampName.toLowerCase() ? -1 : 1
-    );
+  return result;
+};
 
-    return result;
-  };
+const countUserStamp = (userStampList: UserStamp[]): number => {
+  const certifiedUserStamps = userStampList.filter((stamp) => {
+    return stamp.isStamp === true;
+  });
 
-  public countUserStamp = (userStampList: UserStamp[]): number => {
-    const certifiedUserStamps = userStampList.filter((stamp) => {
-      return stamp.isStamp === true;
-    });
+  return certifiedUserStamps.length;
+};
 
-    return certifiedUserStamps.length;
-  };
+const findUserStamp = async (userStampId: number): Promise<UserStamp> => {
+  const userStamp = await userStampRepository.findUserStamp(userStampId);
+  console.log(userStamp);
 
-  public findUserStamp = async (userStampId: number): Promise<UserStamp> => {
-    const userStamp = await this.userStampRepository.findUserStamp(userStampId);
-    console.log(userStamp);
+  if (TypeChecker.isNull(userStamp)) {
+    throw new NotFoundException("등록된 스탬프가 없습니다.");
+  }
 
-    if (TypeChecker.isNull(userStamp)) {
-      throw new NotFoundException("등록된 스탬프가 없습니다.");
-    }
+  return userStamp;
+};
 
-    return userStamp;
-  };
+const certifyStamp = async (params: {
+  userStampId: number;
+  userStampImage: string;
+  stampComment: string;
+  weatherTemp: string;
+  weatherIcon: string;
+}): Promise<UserStamp> => {
+  const userStamp = await userStampRepository.findUserStampById(
+    params.userStampId
+  );
 
-  public certifyStamp = async (params: {
+  if (TypeChecker.isNull(userStamp)) {
+    throw new NotFoundException("등록된 스탬프가 없습니다.");
+  }
+
+  return updateUserStamp(userStamp, params);
+};
+
+//TODO updatedAt check
+const updateUserStamp = (
+  userStamp: UserStamp,
+  params: {
     userStampId: number;
     userStampImage: string;
     stampComment: string;
     weatherTemp: string;
     weatherIcon: string;
-  }): Promise<UserStamp> => {
-    const userStamp = await this.userStampRepository.findUserStampById(
-      params.userStampId
-    );
+  }
+): UserStamp => {
+  const now = dayjs().toDate();
 
-    if (TypeChecker.isNull(userStamp)) {
-      throw new NotFoundException("등록된 스탬프가 없습니다.");
-    }
+  userStamp.registrationAt = now;
+  userStamp.isStamp = true;
+  userStamp.userStampImage = params.userStampImage;
+  userStamp.stampComment = params.stampComment;
+  userStamp.weatherTemp = params.weatherTemp;
+  userStamp.weatherIcon = params.weatherIcon;
 
-    return this.updateUserStamp(userStamp, params);
-  };
+  userStamp.save();
 
-  //TODO updatedAt check
-  private updateUserStamp = (
-    userStamp: UserStamp,
-    params: {
-      userStampId: number;
-      userStampImage: string;
-      stampComment: string;
-      weatherTemp: string;
-      weatherIcon: string;
-    }
-  ): UserStamp => {
-    const now = dayjs().toDate();
+  return userStamp;
+};
 
-    userStamp.registrationAt = now;
-    userStamp.isStamp = true;
-    userStamp.userStampImage = params.userStampImage;
-    userStamp.stampComment = params.stampComment;
-    userStamp.weatherTemp = params.weatherTemp;
-    userStamp.weatherIcon = params.weatherIcon;
-
-    userStamp.save();
-
-    return userStamp;
-  };
-}
+export {
+  findAllUserStamp,
+  countUserStamp,
+  findUserStamp,
+  certifyStamp,
+  updateUserStamp,
+};

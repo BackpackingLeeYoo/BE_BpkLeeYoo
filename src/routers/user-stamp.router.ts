@@ -1,14 +1,9 @@
 import { Router } from "express";
-import { StampController } from "../controllers/user-stamp-controller";
+import * as stampController from "../controllers/user-stamp-controller";
 import { imageUploader } from "../middlewares/s3/upload";
 import { AuthMiddleware } from "../middlewares/auth-middleware/auth-middleware";
-import { UserStampRepository } from "src/repositories/user-stamp.repository";
-import { UserStampService } from "src/services/user-stamp-services";
 
 const router = Router();
-const stampController = new StampController(
-  new UserStampService(new UserStampRepository())
-);
 
 router.get("/", AuthMiddleware, stampController.getAllUserStamps);
 //파라미터명 변경 (stampId -> userStampId)

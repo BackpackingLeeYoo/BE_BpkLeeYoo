@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 import { jwtwebtoken } from "../../common/constants";
-import { User } from "src/models/user";
+import { User } from "../../models/user";
 
 export const AuthMiddleware = (
   req: Request,

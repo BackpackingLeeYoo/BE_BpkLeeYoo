@@ -1,13 +1,11 @@
 import { User } from "../models/user";
 
-export class UserRepository {
-  constructor() {}
+const findUserById = async (userId: number): Promise<User> => {
+  return await User.findByPk(userId);
+};
 
-  findUserById = async (userId: number): Promise<User> => {
-    return await User.findByPk(userId);
-  };
+const findUserByEmail = async (email: string): Promise<User> => {
+  return await User.findOne({ where: { email } });
+};
 
-  findUserByEmail = async (email: string): Promise<User> => {
-    return await User.findOne({ where: { email } });
-  };
-}
+export { findUserById, findUserByEmail };

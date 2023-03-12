@@ -216,41 +216,6 @@
         "signature": "d2f31f19e1ba6ed59be9259d660a239d9a3fcbbc8e038c6b2009bde34b175fed",
         "affectsGlobalScope": false
       },
-      "./dist/app.d.ts": {
-        "version": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
-        "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
-        "affectsGlobalScope": false
-      },
-      "./dist/common/constants.d.ts": {
-        "version": "d98dd94686eafcc7bf51a42f1b5ddaf45254c8211d50301f72d236608d6dafd6",
-        "signature": "d98dd94686eafcc7bf51a42f1b5ddaf45254c8211d50301f72d236608d6dafd6",
-        "affectsGlobalScope": false
-      },
-      "./dist/common/stamp-data.d.ts": {
-        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "affectsGlobalScope": false
-      },
-      "./dist/common/type-checker.d.ts": {
-        "version": "d81679b96041ed977b4adac2d49419fbfee698caf804ee1aefd5bd88466e06b6",
-        "signature": "d81679b96041ed977b4adac2d49419fbfee698caf804ee1aefd5bd88466e06b6",
-        "affectsGlobalScope": false
-      },
-      "./dist/common/exceptions/bad-request.exception.d.ts": {
-        "version": "872d6090f998f8dba640cffaf89f0587f76531fd3a43b5de0bec0743aedbed07",
-        "signature": "872d6090f998f8dba640cffaf89f0587f76531fd3a43b5de0bec0743aedbed07",
-        "affectsGlobalScope": false
-      },
-      "./dist/common/exceptions/invalid-params.exception.d.ts": {
-        "version": "31ccb5229993efdb854998f0a6f072adc0dfe778dc9375228653ce3913d1a1a8",
-        "signature": "31ccb5229993efdb854998f0a6f072adc0dfe778dc9375228653ce3913d1a1a8",
-        "affectsGlobalScope": false
-      },
-      "./dist/common/exceptions/not-found.exception.d.ts": {
-        "version": "a1fee0e04a86591f85975daa475192e8245545780b7a7365cfa5317cde587962",
-        "signature": "a1fee0e04a86591f85975daa475192e8245545780b7a7365cfa5317cde587962",
-        "affectsGlobalScope": false
-      },
       "./node_modules/@types/node/assert.d.ts": {
         "version": "9122ed7070e054b73ebab37c2373a196def2d90e7d1a9a7fcd9d46b0e51fae78",
         "signature": "9122ed7070e054b73ebab37c2373a196def2d90e7d1a9a7fcd9d46b0e51fae78",
@@ -561,9 +526,104 @@
         "signature": "15c88bfd1b8dc7231ff828ae8df5d955bae5ebca4cf2bcb417af5821e52299ae",
         "affectsGlobalScope": false
       },
-      "./dist/controllers/auth-controller.d.ts": {
-        "version": "a75763e89cc77bbc21d0bb1dafa5ab0007a1fc4f5b04b0e416f61bc3525cad0c",
-        "signature": "a75763e89cc77bbc21d0bb1dafa5ab0007a1fc4f5b04b0e416f61bc3525cad0c",
+      "./node_modules/@types/cors/index.d.ts": {
+        "version": "6fbd58e4015b9ae31ea977d4d549eb24a1102cc798b57ec5d70868b542c06612",
+        "signature": "6fbd58e4015b9ae31ea977d4d549eb24a1102cc798b57ec5d70868b542c06612",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/morgan/index.d.ts": {
+        "version": "eed3474a76f30632cd88fbacc0f861faa6d8df35f7588add25df88d7f422825f",
+        "signature": "eed3474a76f30632cd88fbacc0f861faa6d8df35f7588add25df88d7f422825f",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/content-security-policy/index.d.ts": {
+        "version": "86b871cd129e3efdac704ab2714d7554c969962a1fee9175e79377ec574e2621",
+        "signature": "86b871cd129e3efdac704ab2714d7554c969962a1fee9175e79377ec574e2621",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/cross-origin-embedder-policy/index.d.ts": {
+        "version": "28005c8e460b78fa2c21f078bfe35199b84caa0467e517f5c79f3473f584bd45",
+        "signature": "28005c8e460b78fa2c21f078bfe35199b84caa0467e517f5c79f3473f584bd45",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/cross-origin-opener-policy/index.d.ts": {
+        "version": "a8d4a187b1b5fe67e3741e48c8d6ab93b083e1fffedee72cab9f9b0280316342",
+        "signature": "a8d4a187b1b5fe67e3741e48c8d6ab93b083e1fffedee72cab9f9b0280316342",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/cross-origin-resource-policy/index.d.ts": {
+        "version": "95ef44c0994ffa5b21ae44f29eeb8e9eb4f72ae453cd6551ea6baeacd8697465",
+        "signature": "95ef44c0994ffa5b21ae44f29eeb8e9eb4f72ae453cd6551ea6baeacd8697465",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/expect-ct/index.d.ts": {
+        "version": "f7681e9f78636bfbbaa5264c6ceec2a150629088daf5e0aed21f52256cb6302a",
+        "signature": "f7681e9f78636bfbbaa5264c6ceec2a150629088daf5e0aed21f52256cb6302a",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/origin-agent-cluster/index.d.ts": {
+        "version": "e8ea348603f8a57adf6f9fc058affbaddbb00978560e19c43fc9a386b92c8660",
+        "signature": "e8ea348603f8a57adf6f9fc058affbaddbb00978560e19c43fc9a386b92c8660",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/referrer-policy/index.d.ts": {
+        "version": "f7a5e94af094530e47ab1b7fdf8d06ec5dfb835b57cd158f7c1894f42c7d8883",
+        "signature": "f7a5e94af094530e47ab1b7fdf8d06ec5dfb835b57cd158f7c1894f42c7d8883",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/strict-transport-security/index.d.ts": {
+        "version": "36f6aaf6d5b9448ecd1cf5266d2b4e11060d44904fa5b9d7d5234015ae480a3a",
+        "signature": "36f6aaf6d5b9448ecd1cf5266d2b4e11060d44904fa5b9d7d5234015ae480a3a",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/x-content-type-options/index.d.ts": {
+        "version": "2d9a696fca926efe8fc9910690ebc46f04df1ebc890571af766dc7d60263b694",
+        "signature": "2d9a696fca926efe8fc9910690ebc46f04df1ebc890571af766dc7d60263b694",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/x-dns-prefetch-control/index.d.ts": {
+        "version": "16e3d860aa42128df85e6018bcbaa7ec5aa2cc07f079c930ee0ca275b866f3f6",
+        "signature": "16e3d860aa42128df85e6018bcbaa7ec5aa2cc07f079c930ee0ca275b866f3f6",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/x-download-options/index.d.ts": {
+        "version": "657f7b3f9c16827761c790b2106d7f757cdcb6004c562ac3435115d21490cffe",
+        "signature": "657f7b3f9c16827761c790b2106d7f757cdcb6004c562ac3435115d21490cffe",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/x-frame-options/index.d.ts": {
+        "version": "25a4f5996d5029f67eb77bf287e509192728e9bda207c41263efe1802f6aa5ee",
+        "signature": "25a4f5996d5029f67eb77bf287e509192728e9bda207c41263efe1802f6aa5ee",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/x-permitted-cross-domain-policies/index.d.ts": {
+        "version": "c72af535aa906fc41f953fc345aeb316dfc6c59cb58a6e6d9b337f06e5a9134b",
+        "signature": "c72af535aa906fc41f953fc345aeb316dfc6c59cb58a6e6d9b337f06e5a9134b",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/x-powered-by/index.d.ts": {
+        "version": "7c4342f96e73450836264d607350af8c898672e940c96fcba3cb2ac9a3dcea7b",
+        "signature": "7c4342f96e73450836264d607350af8c898672e940c96fcba3cb2ac9a3dcea7b",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/middlewares/x-xss-protection/index.d.ts": {
+        "version": "67de9e69a3b45a06f39da8b7e09873686aa759fe65f184bb79e5cbb4460390a4",
+        "signature": "67de9e69a3b45a06f39da8b7e09873686aa759fe65f184bb79e5cbb4460390a4",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/helmet/dist/types/index.d.ts": {
+        "version": "1654eab6d8f686f0d5213d342e7b880b7af7b210009e531cc7c631fe1a093611",
+        "signature": "1654eab6d8f686f0d5213d342e7b880b7af7b210009e531cc7c631fe1a093611",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/@types/passport/index.d.ts": {
+        "version": "d9aa2c3d6bb462015bb36be4282ec9dfeca33d687aae1b7d726c6c9543165dd1",
+        "signature": "d9aa2c3d6bb462015bb36be4282ec9dfeca33d687aae1b7d726c6c9543165dd1",
+        "affectsGlobalScope": true
+      },
+      "./node_modules/@types/jsonwebtoken/index.d.ts": {
+        "version": "bb4ed283cfb3db7ec1d4bb79c37f5e96d39b340f1f4de995c4b0b836c8d5fa05",
+        "signature": "bb4ed283cfb3db7ec1d4bb79c37f5e96d39b340f1f4de995c4b0b836c8d5fa05",
         "affectsGlobalScope": false
       },
       "./node_modules/sequelize/types/data-types.d.ts": {
@@ -882,23 +942,63 @@
         "affectsGlobalScope": false
       },
       "./src/models/user.ts": {
-        "version": "236da9b93033785052a4a66cb3fb371770ab248c47292884a42744a30027712f",
-        "signature": "6db0cfbc8e5cbe82db95e260c8b9a2a981cfc1cbe47b01519ae178676d8abbd3",
+        "version": "d7b9147ba3ed02a5671d1ff90d0bb69f1c8a385bdfe61bf55709f5d2d458030c",
+        "signature": "9ed8390af0613dfcd0cdaf5f2b18d13b38bc077a3529ccfee4a25dfc825e5f7d",
+        "affectsGlobalScope": false
+      },
+      "./node_modules/dotenv/lib/main.d.ts": {
+        "version": "cfdd927a5eae7a7e623b9745722ef3f2b7a2997fddc5d32b7e3dcaeeb15ff4a3",
+        "signature": "cfdd927a5eae7a7e623b9745722ef3f2b7a2997fddc5d32b7e3dcaeeb15ff4a3",
+        "affectsGlobalScope": false
+      },
+      "./src/common/constants.ts": {
+        "version": "e0318fdaf387e376e06ded61c908551978ac92dbfe05e0fb96fbd1fbfd0fa7d6",
+        "signature": "d98dd94686eafcc7bf51a42f1b5ddaf45254c8211d50301f72d236608d6dafd6",
+        "affectsGlobalScope": false
+      },
+      "./src/controllers/auth-controller.ts": {
+        "version": "c6c446e71afb82ecf62b4740e522b6fd3d84ebf31f38e5fe6e869d004d336742",
+        "signature": "b21d21542c00f630c2eea61f9c812e26b4f65c9ede0df47898cc13ca80d1a5a6",
+        "affectsGlobalScope": false
+      },
+      "./src/routers/auth.router.ts": {
+        "version": "4b19fad46365086e00ce4281dc0093b42442aa37d10c2fc919c2ca9391fed30f",
+        "signature": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
+        "affectsGlobalScope": false
+      },
+      "./src/middlewares/auth-middleware/auth-middleware.ts": {
+        "version": "0ae8a0c552be31ac61cc436fc6cf0f7c476d4c87e53bd28c996beebb591824a8",
+        "signature": "9819106c231126eb8ae025338b4745efbe416397bf7ad48f22f73de9d8cc4d96",
+        "affectsGlobalScope": false
+      },
+      "./src/common/exceptions/not-found.exception.ts": {
+        "version": "2dc14c50db4180f4634d6e982cb8ac49a024651d208c7f0e7abb5ac8136e7e76",
+        "signature": "a1fee0e04a86591f85975daa475192e8245545780b7a7365cfa5317cde587962",
+        "affectsGlobalScope": false
+      },
+      "./src/common/type-checker.ts": {
+        "version": "59d606bce33f267d2944afbed8915095e0bd3748c43f90561f42174d22da9bf8",
+        "signature": "d81679b96041ed977b4adac2d49419fbfee698caf804ee1aefd5bd88466e06b6",
         "affectsGlobalScope": false
       },
       "./src/repositories/user.repository.ts": {
-        "version": "5d8e299789d770a8d61ef8f15267aac272208ee0d69eec13c94cd7921fb6d48d",
-        "signature": "5bb77f250418cf2fda31ee3f5899e88307954163854d0cdb20082edb5eae30d2",
+        "version": "99e05e1fb49534867417200dfc1f4d1cd34448ce96cb7ce843c50bc5b5cb0680",
+        "signature": "14958dc5c6cc822e3f2b3b880ecdf40df81d6e15f8fc0456376cbced3dc39c1a",
         "affectsGlobalScope": false
       },
-      "./dist/services/user-services.d.ts": {
-        "version": "83b22d6cc6c576f6d0f32a2f56914ac6d3acc33df7e62e2a3996cdd69de31a17",
-        "signature": "83b22d6cc6c576f6d0f32a2f56914ac6d3acc33df7e62e2a3996cdd69de31a17",
+      "./src/services/user-services.ts": {
+        "version": "e63c8b7cf2499d39d10feb5a5d154f56118483c20d7e23491c124d4685d2c77a",
+        "signature": "e10730e7bc6a029f1556cdc6f9950e27c64ddb89bc08c93d1d95b0bcf3d6901b",
         "affectsGlobalScope": false
       },
-      "./dist/controllers/user-controller.d.ts": {
-        "version": "4976fe955097dbd71205c8b174f15971d9a61a28f60fa0c155df47cf8a5fc425",
-        "signature": "4976fe955097dbd71205c8b174f15971d9a61a28f60fa0c155df47cf8a5fc425",
+      "./src/controllers/user-controller.ts": {
+        "version": "40a69c104587db476eac97eea8c79f927b9ba4a6bfc5f865d8ce8311bf9675f1",
+        "signature": "9b85c2528625e85821af319ce49c86e155a65ec5386d608aa54dc7a44b25ae3a",
+        "affectsGlobalScope": false
+      },
+      "./src/routers/user.router.ts": {
+        "version": "2d8e28dc5778409adede41e151370375062337c90f7840479c8ab87c3682d336",
+        "signature": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
         "affectsGlobalScope": false
       },
       "./node_modules/joi/lib/index.d.ts": {
@@ -921,270 +1021,25 @@
         "signature": "09d906c1aeb34304755b072698e6728d3e83ed0b6366cf82e695f7a0f078564e",
         "affectsGlobalScope": false
       },
-      "./src/common/exceptions/not-found.exception.ts": {
-        "version": "2dc14c50db4180f4634d6e982cb8ac49a024651d208c7f0e7abb5ac8136e7e76",
-        "signature": "a1fee0e04a86591f85975daa475192e8245545780b7a7365cfa5317cde587962",
-        "affectsGlobalScope": false
-      },
-      "./src/common/type-checker.ts": {
-        "version": "ef5dbc7f53086ec7d834893c33b28d1f6580ddce2c41bc5d5bc95f689f87ff96",
-        "signature": "d81679b96041ed977b4adac2d49419fbfee698caf804ee1aefd5bd88466e06b6",
-        "affectsGlobalScope": false
-      },
       "./src/repositories/user-stamp.repository.ts": {
-        "version": "38a926f801193d30574c815d69392367b881f4e9330fbdeb697c912bb09b0f65",
-        "signature": "3756d1f75206de849af3fca4abe00db6f45e38c76cdb70bdeb36a3f5e82798b6",
+        "version": "37936420a528a37cf8e6096dcdecd8f69872385c297cc7e41729a85b89feb6b3",
+        "signature": "eaa1d8719ccbc65edebfe1b4f6c406bca27c71ced5bba001d5913c24457e3b84",
         "affectsGlobalScope": false
       },
       "./src/services/user-stamp-services.ts": {
-        "version": "8ecb104cc4f6406c136956546e8bacde9e8b9a6dc5a7ccb1ab651903d9ccdb22",
-        "signature": "4cf708c6b371d7679f21c803223c3014fc1839b32b69613cad38bdbfa6da5797",
+        "version": "9b2dae8dbfc88f9dda156ce426178b87e07d34eef694a22c3702caa687a039e5",
+        "signature": "eebe465c5a041a515f5ab1327b8f278039cccf466b3b5fcc29ec55c2fa5660a9",
         "affectsGlobalScope": false
       },
-      "./dist/controllers/user-stamp-controller.d.ts": {
-        "version": "8dc7061f073b0e8b621089c08bf52e07ece61c534f063e46f368e3fcd0c57c73",
-        "signature": "8dc7061f073b0e8b621089c08bf52e07ece61c534f063e46f368e3fcd0c57c73",
-        "affectsGlobalScope": false
-      },
-      "./dist/middlewares/auth-middleware/auth-middleware.d.ts": {
-        "version": "9819106c231126eb8ae025338b4745efbe416397bf7ad48f22f73de9d8cc4d96",
-        "signature": "9819106c231126eb8ae025338b4745efbe416397bf7ad48f22f73de9d8cc4d96",
-        "affectsGlobalScope": false
-      },
-      "./dist/middlewares/error-handler/error-handler-middleware.d.ts": {
-        "version": "231b1e4750f4dc8addc42a0df7a2590fb31a4194ef986ab761965d0980169afc",
-        "signature": "231b1e4750f4dc8addc42a0df7a2590fb31a4194ef986ab761965d0980169afc",
-        "affectsGlobalScope": false
-      },
-      "./dist/middlewares/passport/index.d.ts": {
-        "version": "4660e9de0dedd0cf7986dfb1b74d37212600291cd57500efa63bb437743c7cbe",
-        "signature": "4660e9de0dedd0cf7986dfb1b74d37212600291cd57500efa63bb437743c7cbe",
+      "./src/controllers/user-stamp-controller.ts": {
+        "version": "4ec4f6ab9cdd47a373f279e45d9f1586c7ff00d8d33349141ed2d249a73d7910",
+        "signature": "551ebb434e5f17476d65dfc8ee48508f7b1b5bba2d5b8954d3567f56d0940b7e",
         "affectsGlobalScope": false
       },
       "./node_modules/@types/multer/index.d.ts": {
         "version": "3ee881b5584c5718935e6fe1fc1080b997682a3c8bebd17d51dccfd41c3e7da6",
         "signature": "3ee881b5584c5718935e6fe1fc1080b997682a3c8bebd17d51dccfd41c3e7da6",
         "affectsGlobalScope": true
-      },
-      "./dist/middlewares/s3/upload.d.ts": {
-        "version": "3890820cd3c655f0b014237667708282362149403c41af25094aea82236c0df2",
-        "signature": "3890820cd3c655f0b014237667708282362149403c41af25094aea82236c0df2",
-        "affectsGlobalScope": false
-      },
-      "./dist/migrations/20230225110930-create-user.d.ts": {
-        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "affectsGlobalScope": false
-      },
-      "./dist/migrations/20230225111000-create-stamp.d.ts": {
-        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "affectsGlobalScope": false
-      },
-      "./dist/migrations/20230225111030-create-user-stamp.d.ts": {
-        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "affectsGlobalScope": false
-      },
-      "./dist/models/index.d.ts": {
-        "version": "5a45828173d6abce824a7ccc667d96063fd9c58a1dca3bee38f8acf07556ec2f",
-        "signature": "5a45828173d6abce824a7ccc667d96063fd9c58a1dca3bee38f8acf07556ec2f",
-        "affectsGlobalScope": false
-      },
-      "./dist/models/user.d.ts": {
-        "version": "6db0cfbc8e5cbe82db95e260c8b9a2a981cfc1cbe47b01519ae178676d8abbd3",
-        "signature": "6db0cfbc8e5cbe82db95e260c8b9a2a981cfc1cbe47b01519ae178676d8abbd3",
-        "affectsGlobalScope": false
-      },
-      "./dist/models/user-stamp.d.ts": {
-        "version": "7a666b930715d194da67a427cec1434d8322d009e7355e722520f381da6ee4e0",
-        "signature": "7a666b930715d194da67a427cec1434d8322d009e7355e722520f381da6ee4e0",
-        "affectsGlobalScope": false
-      },
-      "./dist/models/stamp.d.ts": {
-        "version": "a4a93b1870db2b7ad3907572c03a0c720043124f0cde46b254eb6bc61004a315",
-        "signature": "a4a93b1870db2b7ad3907572c03a0c720043124f0cde46b254eb6bc61004a315",
-        "affectsGlobalScope": false
-      },
-      "./dist/repositories/user-stamp.repository.d.ts": {
-        "version": "3756d1f75206de849af3fca4abe00db6f45e38c76cdb70bdeb36a3f5e82798b6",
-        "signature": "3756d1f75206de849af3fca4abe00db6f45e38c76cdb70bdeb36a3f5e82798b6",
-        "affectsGlobalScope": false
-      },
-      "./dist/repositories/user.repository.d.ts": {
-        "version": "5bb77f250418cf2fda31ee3f5899e88307954163854d0cdb20082edb5eae30d2",
-        "signature": "5bb77f250418cf2fda31ee3f5899e88307954163854d0cdb20082edb5eae30d2",
-        "affectsGlobalScope": false
-      },
-      "./dist/routers/auth.router.d.ts": {
-        "version": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
-        "signature": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
-        "affectsGlobalScope": false
-      },
-      "./dist/routers/index.d.ts": {
-        "version": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
-        "signature": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
-        "affectsGlobalScope": false
-      },
-      "./dist/routers/user-stamp.router.d.ts": {
-        "version": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
-        "signature": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
-        "affectsGlobalScope": false
-      },
-      "./dist/routers/user.router.d.ts": {
-        "version": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
-        "signature": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
-        "affectsGlobalScope": false
-      },
-      "./dist/services/user-stamp-services.d.ts": {
-        "version": "4cf708c6b371d7679f21c803223c3014fc1839b32b69613cad38bdbfa6da5797",
-        "signature": "4cf708c6b371d7679f21c803223c3014fc1839b32b69613cad38bdbfa6da5797",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/cors/index.d.ts": {
-        "version": "6fbd58e4015b9ae31ea977d4d549eb24a1102cc798b57ec5d70868b542c06612",
-        "signature": "6fbd58e4015b9ae31ea977d4d549eb24a1102cc798b57ec5d70868b542c06612",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/morgan/index.d.ts": {
-        "version": "eed3474a76f30632cd88fbacc0f861faa6d8df35f7588add25df88d7f422825f",
-        "signature": "eed3474a76f30632cd88fbacc0f861faa6d8df35f7588add25df88d7f422825f",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/content-security-policy/index.d.ts": {
-        "version": "86b871cd129e3efdac704ab2714d7554c969962a1fee9175e79377ec574e2621",
-        "signature": "86b871cd129e3efdac704ab2714d7554c969962a1fee9175e79377ec574e2621",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/cross-origin-embedder-policy/index.d.ts": {
-        "version": "28005c8e460b78fa2c21f078bfe35199b84caa0467e517f5c79f3473f584bd45",
-        "signature": "28005c8e460b78fa2c21f078bfe35199b84caa0467e517f5c79f3473f584bd45",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/cross-origin-opener-policy/index.d.ts": {
-        "version": "a8d4a187b1b5fe67e3741e48c8d6ab93b083e1fffedee72cab9f9b0280316342",
-        "signature": "a8d4a187b1b5fe67e3741e48c8d6ab93b083e1fffedee72cab9f9b0280316342",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/cross-origin-resource-policy/index.d.ts": {
-        "version": "95ef44c0994ffa5b21ae44f29eeb8e9eb4f72ae453cd6551ea6baeacd8697465",
-        "signature": "95ef44c0994ffa5b21ae44f29eeb8e9eb4f72ae453cd6551ea6baeacd8697465",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/expect-ct/index.d.ts": {
-        "version": "f7681e9f78636bfbbaa5264c6ceec2a150629088daf5e0aed21f52256cb6302a",
-        "signature": "f7681e9f78636bfbbaa5264c6ceec2a150629088daf5e0aed21f52256cb6302a",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/origin-agent-cluster/index.d.ts": {
-        "version": "e8ea348603f8a57adf6f9fc058affbaddbb00978560e19c43fc9a386b92c8660",
-        "signature": "e8ea348603f8a57adf6f9fc058affbaddbb00978560e19c43fc9a386b92c8660",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/referrer-policy/index.d.ts": {
-        "version": "f7a5e94af094530e47ab1b7fdf8d06ec5dfb835b57cd158f7c1894f42c7d8883",
-        "signature": "f7a5e94af094530e47ab1b7fdf8d06ec5dfb835b57cd158f7c1894f42c7d8883",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/strict-transport-security/index.d.ts": {
-        "version": "36f6aaf6d5b9448ecd1cf5266d2b4e11060d44904fa5b9d7d5234015ae480a3a",
-        "signature": "36f6aaf6d5b9448ecd1cf5266d2b4e11060d44904fa5b9d7d5234015ae480a3a",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/x-content-type-options/index.d.ts": {
-        "version": "2d9a696fca926efe8fc9910690ebc46f04df1ebc890571af766dc7d60263b694",
-        "signature": "2d9a696fca926efe8fc9910690ebc46f04df1ebc890571af766dc7d60263b694",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/x-dns-prefetch-control/index.d.ts": {
-        "version": "16e3d860aa42128df85e6018bcbaa7ec5aa2cc07f079c930ee0ca275b866f3f6",
-        "signature": "16e3d860aa42128df85e6018bcbaa7ec5aa2cc07f079c930ee0ca275b866f3f6",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/x-download-options/index.d.ts": {
-        "version": "657f7b3f9c16827761c790b2106d7f757cdcb6004c562ac3435115d21490cffe",
-        "signature": "657f7b3f9c16827761c790b2106d7f757cdcb6004c562ac3435115d21490cffe",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/x-frame-options/index.d.ts": {
-        "version": "25a4f5996d5029f67eb77bf287e509192728e9bda207c41263efe1802f6aa5ee",
-        "signature": "25a4f5996d5029f67eb77bf287e509192728e9bda207c41263efe1802f6aa5ee",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/x-permitted-cross-domain-policies/index.d.ts": {
-        "version": "c72af535aa906fc41f953fc345aeb316dfc6c59cb58a6e6d9b337f06e5a9134b",
-        "signature": "c72af535aa906fc41f953fc345aeb316dfc6c59cb58a6e6d9b337f06e5a9134b",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/x-powered-by/index.d.ts": {
-        "version": "7c4342f96e73450836264d607350af8c898672e940c96fcba3cb2ac9a3dcea7b",
-        "signature": "7c4342f96e73450836264d607350af8c898672e940c96fcba3cb2ac9a3dcea7b",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/middlewares/x-xss-protection/index.d.ts": {
-        "version": "67de9e69a3b45a06f39da8b7e09873686aa759fe65f184bb79e5cbb4460390a4",
-        "signature": "67de9e69a3b45a06f39da8b7e09873686aa759fe65f184bb79e5cbb4460390a4",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/helmet/dist/types/index.d.ts": {
-        "version": "1654eab6d8f686f0d5213d342e7b880b7af7b210009e531cc7c631fe1a093611",
-        "signature": "1654eab6d8f686f0d5213d342e7b880b7af7b210009e531cc7c631fe1a093611",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/passport/index.d.ts": {
-        "version": "d9aa2c3d6bb462015bb36be4282ec9dfeca33d687aae1b7d726c6c9543165dd1",
-        "signature": "d9aa2c3d6bb462015bb36be4282ec9dfeca33d687aae1b7d726c6c9543165dd1",
-        "affectsGlobalScope": true
-      },
-      "./node_modules/@types/jsonwebtoken/index.d.ts": {
-        "version": "bb4ed283cfb3db7ec1d4bb79c37f5e96d39b340f1f4de995c4b0b836c8d5fa05",
-        "signature": "bb4ed283cfb3db7ec1d4bb79c37f5e96d39b340f1f4de995c4b0b836c8d5fa05",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/dotenv/lib/main.d.ts": {
-        "version": "cfdd927a5eae7a7e623b9745722ef3f2b7a2997fddc5d32b7e3dcaeeb15ff4a3",
-        "signature": "cfdd927a5eae7a7e623b9745722ef3f2b7a2997fddc5d32b7e3dcaeeb15ff4a3",
-        "affectsGlobalScope": false
-      },
-      "./src/common/constants.ts": {
-        "version": "e0318fdaf387e376e06ded61c908551978ac92dbfe05e0fb96fbd1fbfd0fa7d6",
-        "signature": "d98dd94686eafcc7bf51a42f1b5ddaf45254c8211d50301f72d236608d6dafd6",
-        "affectsGlobalScope": false
-      },
-      "./src/controllers/auth-controller.ts": {
-        "version": "f8919dd3bb1d6811d82ead3a21421ffe3564d244990a931110fab8bc5164a06b",
-        "signature": "a75763e89cc77bbc21d0bb1dafa5ab0007a1fc4f5b04b0e416f61bc3525cad0c",
-        "affectsGlobalScope": false
-      },
-      "./src/routers/auth.router.ts": {
-        "version": "0a38f9689b5829c2469dbcacae515473f91bb041808952d24633145c404b53b7",
-        "signature": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
-        "affectsGlobalScope": false
-      },
-      "./src/middlewares/auth-middleware/auth-middleware.ts": {
-        "version": "505e3e41ee205a8779fcaaad7457fab1da4a87da3e32a821777be9cc8018c257",
-        "signature": "9819106c231126eb8ae025338b4745efbe416397bf7ad48f22f73de9d8cc4d96",
-        "affectsGlobalScope": false
-      },
-      "./src/services/user-services.ts": {
-        "version": "e2ef2c35e15bc80637215fba46d016cc84eba47d3365437f461809726394bc04",
-        "signature": "83b22d6cc6c576f6d0f32a2f56914ac6d3acc33df7e62e2a3996cdd69de31a17",
-        "affectsGlobalScope": false
-      },
-      "./src/controllers/user-controller.ts": {
-        "version": "09c41e0203be22f2e2843965c685dd14e9d253d5e1b424a77e087c11c477bce8",
-        "signature": "4976fe955097dbd71205c8b174f15971d9a61a28f60fa0c155df47cf8a5fc425",
-        "affectsGlobalScope": false
-      },
-      "./src/routers/user.router.ts": {
-        "version": "0bd95a0220e11a3bfc3298a0dd2e5cfcfd25b501ad484293a3c1803507a63adf",
-        "signature": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
-        "affectsGlobalScope": false
-      },
-      "./src/controllers/user-stamp-controller.ts": {
-        "version": "217fa1d2d1440a34c7b7a60cae448e5b7750b2813354ffa0133f07fe89390f7e",
-        "signature": "8dc7061f073b0e8b621089c08bf52e07ece61c534f063e46f368e3fcd0c57c73",
-        "affectsGlobalScope": false
       },
       "./node_modules/@aws-sdk/client-s3/node_modules/@aws-sdk/types/dist-types/abort.d.ts": {
         "version": "4f1034eac6404cb69bedb8bb04cf246871d1aaebbb99d5617be54f54323464c7",
@@ -2407,7 +2262,7 @@
         "affectsGlobalScope": false
       },
       "./src/routers/user-stamp.router.ts": {
-        "version": "a0c348edb6a6329f23c4a430109dff4aeba29c8236c3ee52aa5714c3dbdb1ab4",
+        "version": "90dd2d629c8521d64ef20c10ab8fc8e7946ab31f7de4c51641b6d9e9ecc00b5f",
         "signature": "0747134fc57c8e4a12d6144952ae1f47f54848f1ca110e997bd81ec1cc7b76e6",
         "affectsGlobalScope": false
       },
@@ -2513,120 +2368,6 @@
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {
-      "./dist/app.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/common/constants.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/common/exceptions/bad-request.exception.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/common/exceptions/invalid-params.exception.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/common/exceptions/not-found.exception.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/common/stamp-data.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/common/type-checker.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/controllers/auth-controller.d.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/controllers/user-controller.d.ts": [
-        "./dist/services/user-services.d.ts",
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/controllers/user-stamp-controller.d.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/joi/lib/index.d.ts",
-        "./src/services/user-stamp-services.ts"
-      ],
-      "./dist/middlewares/auth-middleware/auth-middleware.d.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/middlewares/error-handler/error-handler-middleware.d.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/middlewares/passport/index.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/middlewares/s3/upload.d.ts": [
-        "./node_modules/@types/multer/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/migrations/20230225110930-create-user.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/migrations/20230225111000-create-stamp.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/migrations/20230225111030-create-user-stamp.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/models/index.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/sequelize/types/index.d.ts"
-      ],
-      "./dist/models/stamp.d.ts": [
-        "./dist/models/user-stamp.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/sequelize/types/index.d.ts"
-      ],
-      "./dist/models/user-stamp.d.ts": [
-        "./dist/models/stamp.d.ts",
-        "./dist/models/user.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/sequelize/types/index.d.ts"
-      ],
-      "./dist/models/user.d.ts": [
-        "./dist/models/user-stamp.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/sequelize/types/index.d.ts"
-      ],
-      "./dist/repositories/user-stamp.repository.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./src/models/user-stamp.ts"
-      ],
-      "./dist/repositories/user.repository.d.ts": [
-        "./dist/models/user.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/routers/auth.router.d.ts": [
-        "./node_modules/@types/express-serve-static-core/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/routers/index.d.ts": [
-        "./node_modules/@types/express-serve-static-core/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/routers/user-stamp.router.d.ts": [
-        "./node_modules/@types/express-serve-static-core/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/routers/user.router.d.ts": [
-        "./node_modules/@types/express-serve-static-core/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/services/user-services.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./src/models/user.ts",
-        "./src/repositories/user.repository.ts"
-      ],
-      "./dist/services/user-stamp-services.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./src/models/user-stamp.ts",
-        "./src/repositories/user-stamp.repository.ts"
-      ],
       "./node_modules/@aws-sdk/client-s3/dist-types/commands/abortmultipartuploadcommand.d.ts": [
         "./node_modules/@aws-sdk/client-s3/dist-types/models/models_0.d.ts",
         "./node_modules/@aws-sdk/client-s3/dist-types/s3client.d.ts",
@@ -5725,17 +5466,13 @@
         "./node_modules/@types/node/util.d.ts",
         "./src/controllers/user-stamp-controller.ts",
         "./src/middlewares/auth-middleware/auth-middleware.ts",
-        "./src/middlewares/s3/upload.ts",
-        "./src/repositories/user-stamp.repository.ts",
-        "./src/services/user-stamp-services.ts"
+        "./src/middlewares/s3/upload.ts"
       ],
       "./src/routers/user.router.ts": [
         "./node_modules/@types/express/index.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./src/controllers/user-controller.ts",
-        "./src/middlewares/auth-middleware/auth-middleware.ts",
-        "./src/repositories/user.repository.ts",
-        "./src/services/user-services.ts"
+        "./src/middlewares/auth-middleware/auth-middleware.ts"
       ],
       "./src/services/user-services.ts": [
         "./node_modules/@types/node/util.d.ts",
@@ -5754,120 +5491,6 @@
       ]
     },
     "exportedModulesMap": {
-      "./dist/app.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/common/constants.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/common/exceptions/bad-request.exception.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/common/exceptions/invalid-params.exception.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/common/exceptions/not-found.exception.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/common/stamp-data.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/common/type-checker.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/controllers/auth-controller.d.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/controllers/user-controller.d.ts": [
-        "./dist/services/user-services.d.ts",
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/controllers/user-stamp-controller.d.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/joi/lib/index.d.ts",
-        "./src/services/user-stamp-services.ts"
-      ],
-      "./dist/middlewares/auth-middleware/auth-middleware.d.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/middlewares/error-handler/error-handler-middleware.d.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/middlewares/passport/index.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/middlewares/s3/upload.d.ts": [
-        "./node_modules/@types/multer/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/migrations/20230225110930-create-user.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/migrations/20230225111000-create-stamp.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/migrations/20230225111030-create-user-stamp.d.ts": [
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/models/index.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/sequelize/types/index.d.ts"
-      ],
-      "./dist/models/stamp.d.ts": [
-        "./dist/models/user-stamp.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/sequelize/types/index.d.ts"
-      ],
-      "./dist/models/user-stamp.d.ts": [
-        "./dist/models/stamp.d.ts",
-        "./dist/models/user.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/sequelize/types/index.d.ts"
-      ],
-      "./dist/models/user.d.ts": [
-        "./dist/models/user-stamp.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/sequelize/types/index.d.ts"
-      ],
-      "./dist/repositories/user-stamp.repository.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./src/models/user-stamp.ts"
-      ],
-      "./dist/repositories/user.repository.d.ts": [
-        "./dist/models/user.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/routers/auth.router.d.ts": [
-        "./node_modules/@types/express-serve-static-core/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/routers/index.d.ts": [
-        "./node_modules/@types/express-serve-static-core/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/routers/user-stamp.router.d.ts": [
-        "./node_modules/@types/express-serve-static-core/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/routers/user.router.d.ts": [
-        "./node_modules/@types/express-serve-static-core/index.d.ts",
-        "./node_modules/@types/node/util.d.ts"
-      ],
-      "./dist/services/user-services.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./src/models/user.ts",
-        "./src/repositories/user.repository.ts"
-      ],
-      "./dist/services/user-stamp-services.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./src/models/user-stamp.ts",
-        "./src/repositories/user-stamp.repository.ts"
-      ],
       "./node_modules/@aws-sdk/client-s3/dist-types/commands/abortmultipartuploadcommand.d.ts": [
         "./node_modules/@aws-sdk/client-s3/dist-types/models/models_0.d.ts",
         "./node_modules/@aws-sdk/client-s3/dist-types/s3client.d.ts",
@@ -8828,13 +8451,11 @@
         "./node_modules/@types/express/index.d.ts"
       ],
       "./src/controllers/user-controller.ts": [
-        "./node_modules/@types/express/index.d.ts",
-        "./src/services/user-services.ts"
+        "./node_modules/@types/express/index.d.ts"
       ],
       "./src/controllers/user-stamp-controller.ts": [
         "./node_modules/@types/express/index.d.ts",
-        "./node_modules/joi/lib/index.d.ts",
-        "./src/services/user-stamp-services.ts"
+        "./node_modules/joi/lib/index.d.ts"
       ],
       "./src/middlewares/auth-middleware/auth-middleware.ts": [
         "./node_modules/@types/express/index.d.ts"
@@ -8880,12 +8501,10 @@
         "./node_modules/@types/express-serve-static-core/index.d.ts"
       ],
       "./src/services/user-services.ts": [
-        "./src/models/user.ts",
-        "./src/repositories/user.repository.ts"
+        "./src/models/user.ts"
       ],
       "./src/services/user-stamp-services.ts": [
-        "./src/models/user-stamp.ts",
-        "./src/repositories/user-stamp.repository.ts"
+        "./src/models/user-stamp.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -9352,6 +8971,7 @@
       "./src/repositories/user-stamp.repository.ts",
       "./src/repositories/user.repository.ts",
       "./src/routers/auth.router.ts",
+      "./src/routers/index.ts",
       "./src/routers/user-stamp.router.ts",
       "./src/routers/user.router.ts",
       "./src/services/user-services.ts",

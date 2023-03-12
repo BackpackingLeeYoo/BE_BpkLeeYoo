@@ -1,10 +1,10 @@
 import passport from "passport";
 const KakaoStrategy = require("passport-kakao").Strategy;
 import { kakao } from "../../common/constants";
-import { User } from "src/models/user";
-import { TypeChecker } from "src/common/type-checker";
-import { Stamp } from "src/models/stamp";
-import { UserStamp } from "src/models/user-stamp";
+import { User } from "../../models/user";
+import { TypeChecker } from "../../common/type-checker";
+import { Stamp } from "../../models/stamp";
+import { UserStamp } from "../../models/user-stamp";
 
 export const KakaoModule = (app: any) => {
   app.use(passport.initialize());

@@ -62,8 +62,8 @@ Stamp.init(
   }
 );
 
-Stamp.hasMany(UserStamp, {
-  sourceKey: "id",
-  foreignKey: "stampId",
-  as: "stampHasManyUserStamp",
-});
+// Stamp.hasMany(UserStamp, {
+//   sourceKey: "id",
+//   foreignKey: "stampId",
+//   as: "stampHasManyUserStamp",
+// });

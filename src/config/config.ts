@@ -1,7 +1,9 @@
-require("dotenv").config();
+import * as dotenv from "dotenv";
+dotenv.config();
+
 const env = process.env;
 
-const configs = {
+const config = {
   development: {
     username: env.DOMAIN_MYSQL_USER,
     password: env.DOMAIN_MYSQL_PASSWORD,
@@ -25,4 +27,4 @@ const configs = {
   },
 };
 
-module.exports = configs;
+export default config;

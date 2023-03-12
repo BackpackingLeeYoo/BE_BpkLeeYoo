@@ -5,7 +5,7 @@ import path from "path";
 import dayjs from "dayjs";
 import { Request } from "express";
 import { s3Bucket } from "../../common/constants";
-import { InvalidParamsException } from "src/common/exceptions/invalid-params.exception";
+import { InvalidParamsException } from "../../common/exceptions/invalid-params.exception";
 
 type FileNameCallback = (error: Error | null, filename: string) => void;
 

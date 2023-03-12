@@ -10,9 +10,6 @@ interface UserAttributes {
 }
 
 export class User extends Model<UserAttributes> {
-  static findById(userId: any) {
-    throw new Error("Method not implemented.");
-  }
   public readonly id!: number;
   public email!: string;
   public nickname!: string;
@@ -59,8 +56,8 @@ User.init(
   }
 );
 
-User.hasMany(UserStamp, {
-  sourceKey: "id",
-  foreignKey: "userId",
-  as: "userHasManyUserStamp",
-});
+// User.hasMany(UserStamp, {
+//   sourceKey: "id",
+//   foreignKey: "userId",
+//   as: "userHasManyUserStamp",
+// });
