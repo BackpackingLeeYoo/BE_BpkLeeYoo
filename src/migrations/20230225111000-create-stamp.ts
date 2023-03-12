@@ -1,48 +1,43 @@
 "use strict";
-/** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Stamps", {
-      stampId: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
       },
       stampName: {
-        type: Sequelize.STRING,
+        type: Sequelize.DataTypes.STRING(50),
+        allowNull: false,
       },
       stampImage: {
-        type: Sequelize.STRING,
+        type: Sequelize.DataTypes.STRING,
+        allowNull: false,
       },
       latitude: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DataTypes.INTEGER(50),
+        allowNull: false,
       },
       longitude: {
-        type: Sequelize.INTEGER,
-      },
-      isStamp: {
-        type: Sequelize.BOOLEAN,
-      },
-      stampComment: {
-        type: Sequelize.STRING,
-      },
-      weatherTemp: {
-        type: Sequelize.STRING,
-      },
-      weatherIcon: {
-        type: Sequelize.STRING,
+        type: Sequelize.DataTypes.INTEGER(50),
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DataTypes.DATE,
+        defaultValue: Sequelize.DataTypes.NOW,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DataTypes.DATE,
+        defaultValue: Sequelize.DataTypes.NOW,
       },
     });
   },
+
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable("Stamps");
   },

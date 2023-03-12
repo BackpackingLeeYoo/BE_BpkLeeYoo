@@ -4,8 +4,8 @@ import { S3Client } from "@aws-sdk/client-s3";
 import path from "path";
 import dayjs from "dayjs";
 import { Request } from "express";
-import { ErrorMessageEnum } from "../../common/type";
-import { s3Bucket } from "../../configs/constants";
+import { s3Bucket } from "../../common/constants";
+import { InvalidParamsException } from "../../common/exceptions/invalid-params.exception";
 
 type FileNameCallback = (error: Error | null, filename: string) => void;
 
@@ -29,7 +29,7 @@ const fileFilter = (
   ) {
     cb(null, true);
   } else {
-    return cb(new Error(ErrorMessageEnum.WRONG_EXTENSION));
+    return cb(new InvalidParamsException());
   }
 };
 

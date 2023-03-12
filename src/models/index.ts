@@ -1,15 +1,10 @@
-// import SQ from "sequelize";
-// import config from "../configs/config";
+import { Sequelize } from "sequelize";
+import config from "../config/config";
 
-// const { host, username, database, password } = config.development;
+const env = process.env.NODE_ENV || "development";
+const db = config[env];
 
-// export const sequelize = new SQ.Sequelize(
-//   database,
-//   username as string,
-//   password as string,
-//   {
-//     host,
-//     dialect: "mysql",
-//     logging: false,
-//   }
-// );
+export const sequelize = new Sequelize(db.database, db.username, db.password, {
+  host: db.host,
+  dialect: "mysql",
+});
